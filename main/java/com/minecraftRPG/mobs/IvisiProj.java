@@ -40,19 +40,11 @@ public class IvisiProj extends EntityThrowable
 	{
 		return 0.0F;
 	}
-
-	private void explode()
-	{
-		float f = 0.9F;
-		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
-	}
 	
 	@Override
 	protected void onImpact(MovingObjectPosition par1) {
 		if (par1.entityHit instanceof EntityLivingBase)
-		{
-			byte b0 = 9;
-			b0 = 15;		
+		{		
 			if(wolf1 != null){
 				wolf1.setAttackTarget((EntityLivingBase)par1.entityHit);
 				wolf2.setAttackTarget((EntityLivingBase)par1.entityHit);
