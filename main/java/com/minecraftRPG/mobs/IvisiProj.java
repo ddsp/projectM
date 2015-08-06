@@ -53,9 +53,9 @@ public class IvisiProj extends EntityThrowable
 		{
 			byte b0 = 9;
 			b0 = 15;		
-			//par1.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)b0);
 			if(wolf1 != null){
 				wolf1.setAttackTarget((EntityLivingBase)par1.entityHit);
+				wolf2.setAttackTarget((EntityLivingBase)par1.entityHit);
 			}
 		}
 		
