@@ -18,6 +18,8 @@ import net.minecraft.world.World;
 public class SpiritWolfStaff extends ItemSword{
 	
 	protected final float weaponDamage;
+	static EntityBlackWolf wolf;
+	static EntityBlackWolf wolf2;
 	
 	public SpiritWolfStaff(ToolMaterial mat, float damage) {
 		super(mat);
@@ -34,15 +36,15 @@ public class SpiritWolfStaff extends ItemSword{
 	{
 		if (!world.isRemote)
 		{
-			EntityBlackWolf wolf = new EntityBlackWolf(world);
-			wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
-			world.spawnEntityInWorld(wolf);
-			EntityBlackWolf wolf2 = new EntityBlackWolf(world);
-			wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
-			world.spawnEntityInWorld(wolf2);
-			world.spawnEntityInWorld(new IvisiProj( world, player, wolf, wolf2));
-			
-			
+			if(wolf == null){
+				wolf = new EntityBlackWolf(world);
+				wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
+				world.spawnEntityInWorld(wolf);
+				wolf2 = new EntityBlackWolf(world);
+				wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
+				world.spawnEntityInWorld(wolf2);
+			}
+			world.spawnEntityInWorld(new IvisiProj( world, player, wolf, wolf2));		
 		}
 		
 		return itemStack;
