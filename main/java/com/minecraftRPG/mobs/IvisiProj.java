@@ -45,7 +45,7 @@ public class IvisiProj extends EntityThrowable
 	protected void onImpact(MovingObjectPosition par1) {
 		if (par1.entityHit instanceof EntityLivingBase)
 		{		
-			if(wolf1 != null){
+			if((wolf1 != null) || (wolf2 != null)){
 				wolf1.setAttackTarget((EntityLivingBase)par1.entityHit);
 				wolf2.setAttackTarget((EntityLivingBase)par1.entityHit);
 			}
