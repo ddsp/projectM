@@ -3,6 +3,7 @@ package com.minecraftRPG.items;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.minecraftRPG.mobs.EntityBlackWolf;
+import com.minecraftRPG.mobs.EntitySpiritWolf;
 import com.minecraftRPG.mobs.IvisiProj;
 
 import cpw.mods.fml.relauncher.Side;
@@ -18,8 +19,6 @@ import net.minecraft.world.World;
 public class SpiritWolfStaff extends ItemSword{
 	
 	protected final float weaponDamage;
-	static EntityBlackWolf wolf;
-	static EntityBlackWolf wolf2;
 	
 	public SpiritWolfStaff(ToolMaterial mat, float damage) {
 		super(mat);
@@ -36,14 +35,16 @@ public class SpiritWolfStaff extends ItemSword{
 	{
 		if (!world.isRemote)
 		{
-			if(wolf == null){
-				wolf = new EntityBlackWolf(world);
-				wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
-				world.spawnEntityInWorld(wolf);
-				wolf2 = new EntityBlackWolf(world);
-				wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
-				world.spawnEntityInWorld(wolf2);
-			}
+			EntitySpiritWolf wolf = new EntitySpiritWolf(world);
+			wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
+			world.spawnEntityInWorld(wolf); 
+			
+			EntitySpiritWolf wolf2 = new EntitySpiritWolf(world);
+			wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
+			world.spawnEntityInWorld(wolf2);
+			
+			System.out.println("cheguei");
+			
 			world.spawnEntityInWorld(new IvisiProj( world, player, wolf, wolf2));		
 		}
 		

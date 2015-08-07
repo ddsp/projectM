@@ -3,7 +3,7 @@ package com.minecraftRPG.main;
 import com.minecraftRPG.blocks.MinecraftRPGBlocks;
 import com.minecraftRPG.items.MinecraftRPGitems;
 import com.minecraftRPG.lib.Strings;
-import com.minecraftRPG.mobs.EntityM;
+import com.minecraftRPG.mobs.MinecraftRPGEntitys;
 import com.minecraftRPG.structures.Structures;
 import com.minecraftRPG.tileEntity.MinecraftRPGtileEntity;
 
@@ -37,7 +37,7 @@ public class MinecraftRPG
     	MinecraftRPGitems.mainRegistry();
     	MinecraftRPGBlocks.mainRegistry();
     	MinecraftRPGtileEntity.mainRegistry();
-    	EntityM.mainRegistry();
+    	MinecraftRPGEntitys.mainRegistry();
     	
     	proxy.registerRenderThings();
     }

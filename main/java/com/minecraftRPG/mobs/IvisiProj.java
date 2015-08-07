@@ -9,15 +9,15 @@ import net.minecraft.world.World;
 
 public class IvisiProj extends EntityThrowable
 {
-	EntityBlackWolf wolf1;
-	EntityBlackWolf wolf2;
+	EntitySpiritWolf wolf1;
+	EntitySpiritWolf wolf2;
 	
 	public IvisiProj(World par1World)
 	{
 		super(par1World);
 	}
 
-	public IvisiProj(World par1World, EntityLivingBase par2EntityLivingBase, EntityBlackWolf wolf12, EntityBlackWolf wolf22)
+	public IvisiProj(World par1World, EntityLivingBase par2EntityLivingBase, EntitySpiritWolf wolf12, EntitySpiritWolf wolf22)
 	{
 		super(par1World, par2EntityLivingBase);
 		wolf1 = wolf12;

@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 
-public class EntityM {
+public class MinecraftRPGEntitys {
 	
 	public static void mainRegistry(){
 		registerEntity();
@@ -15,6 +15,7 @@ public class EntityM {
 	
 	public static void registerEntity(){
 		createEntity(EntityBlackWolf.class, "BlackWolf", 0x0004FF, 0xFF00E1, true);
+		createEntity(EntitySpiritWolf.class, "SpiritWolf", 0x0004FF, 0xFF00E1, true);
 		createEntity(IvisiProj.class, "InvisiTestTr", 0x0004FF, 0xFF00E1, true);
 	}
 
