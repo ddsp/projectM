@@ -1,7 +1,10 @@
 package com.minecraftRPG.mobs;
 
+import com.minecraftRPG.items.SpiritWolfStaff;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -9,19 +12,25 @@ import net.minecraft.world.World;
 
 public class IvisiProj extends EntityThrowable
 {
-	EntitySpiritWolf wolf1;
-	EntitySpiritWolf wolf2;
+	EntityPlayer player;
+	World world;
+	SpiritWolfStaff father;
 	
 	public IvisiProj(World par1World)
 	{
 		super(par1World);
 	}
 
-	public IvisiProj(World par1World, EntityLivingBase par2EntityLivingBase, EntitySpiritWolf wolf12, EntitySpiritWolf wolf22)
+	public IvisiProj(World par1World, EntityLivingBase par2EntityLivingBase, SpiritWolfStaff p)
 	{
 		super(par1World, par2EntityLivingBase);
-		wolf1 = wolf12;
-		wolf2 = wolf22;		
+		player = (EntityPlayer) par2EntityLivingBase;
+		world = par1World;
+		if(p  == null){
+			System.out.println("cheguei2");
+		}else{
+			father = p;
+		}
 	}
 
 	public IvisiProj(World par1World, double par2, double par4, double par6)
@@ -45,10 +54,23 @@ public class IvisiProj extends EntityThrowable
 	protected void onImpact(MovingObjectPosition par1) {
 		if (par1.entityHit instanceof EntityLivingBase)
 		{		
-			if((wolf1 != null) || (wolf2 != null)){
-				wolf1.setAttackTarget((EntityLivingBase)par1.entityHit);
-				wolf2.setAttackTarget((EntityLivingBase)par1.entityHit);
-			}
+			
+			EntitySpiritWolf wolf = new EntitySpiritWolf(world);
+			wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
+			world.spawnEntityInWorld(wolf); 
+			
+			EntitySpiritWolf wolf2 = new EntitySpiritWolf(world);
+			wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
+			world.spawnEntityInWorld(wolf2);
+			
+			wolf.setTarget(par1.entityHit);
+			wolf2.setTarget(par1.entityHit);
+			wolf.setAttackTarget((EntityLivingBase)par1.entityHit);
+			wolf2.setAttackTarget((EntityLivingBase)par1.entityHit);
+		}
+		
+		if(father != null){
+			father.increaseCooldown();
 		}
 		
 		setDead();

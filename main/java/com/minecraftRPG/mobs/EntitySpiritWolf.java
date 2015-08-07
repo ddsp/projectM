@@ -3,6 +3,8 @@ package com.minecraftRPG.mobs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
@@ -17,6 +19,7 @@ public class EntitySpiritWolf extends EntityWolf {
 	public EntitySpiritWolf(World par1World) {
 		super(par1World);
 		this.setSize(1F, 1F);
+		this.setTamed(true);
 	}
 	
 	public boolean isAIEnabled(){
@@ -27,7 +30,7 @@ public class EntitySpiritWolf extends EntityWolf {
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(5.0F);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(6.5D);
 	}
 
 	@Override
@@ -39,11 +42,14 @@ public class EntitySpiritWolf extends EntityWolf {
 	@Override
 	public boolean attackEntityAsMob(Entity entity)
     {
-		System.out.println("cheguei2");
 		entity.attackEntityFrom(DamageSource.causeMobDamage(this), 4);
 		this.setDead();
         return true;
     }
 
-
+	@Override
+	protected boolean canDespawn()
+    {
+        return this.ticksExisted > 100;
+    }
 }
