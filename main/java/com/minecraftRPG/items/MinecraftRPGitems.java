@@ -20,20 +20,17 @@ public class MinecraftRPGitems {
 	//items
 	public static Item strucFab;
 	public static Item spiritWStaff;
-	public static Item UnreloadSword;
 	public static Item ReloadedSword;
 	
 	public static void initItems(){
 		strucFab = new StrucFab().setUnlocalizedName("StrucFab").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		spiritWStaff = new SpiritWolfStaff(enumToolMaterialMinecraftRPG, 3).setUnlocalizedName("SpiritWolfStaff").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
-		UnreloadSword = new UnreloadSword(enumToolMaterialMinecraftRPG, 0).setUnlocalizedName("UnreloadSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		ReloadedSword = new ReloadedSword(enumToolMaterialMinecraftRPG, 1).setUnlocalizedName("ReloadedSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 	}
 	
 	public static void registerItems(){
 		GameRegistry.registerItem(strucFab, "StrucFab");
 		GameRegistry.registerItem(spiritWStaff, "SpiritWolfStaff");
-		GameRegistry.registerItem(UnreloadSword, "UnreloadSword");
 		GameRegistry.registerItem(ReloadedSword, "ReloadedSword");
 	}
 }

@@ -36,6 +36,7 @@ public class MinecraftRPG
     	GameRegistry.registerWorldGenerator(new Structures(), 0);
     	MinecraftRPGitems.mainRegistry();
     	MinecraftRPGBlocks.mainRegistry();
+    	CraftingManager.mainRegistry();
     	MinecraftRPGtileEntity.mainRegistry();
     	MinecraftRPGEntitys.mainRegistry();
     	
