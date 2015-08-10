@@ -86,10 +86,4 @@ public class ReloadedSword extends ItemSword{
              list.add("Current Charge: " + charge);
     	 }
      }
-	
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-
-		return itemStack;
-    }
 }

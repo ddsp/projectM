@@ -14,13 +14,15 @@ public class MinecraftRPGBlocks {
     }
     
     public static Block spawner;
+    public static Block SilverOre;
     
     public static void initBlocks(){
     	spawner = new spawner(Material.rock).setHardness(1.5F).setBlockName("spawner").setCreativeTab(MinecraftRPGTab);
     }
     
     public static void registerBlocks(){    	
-    	GameRegistry.registerBlock(spawner, "spawner");    	
+    	GameRegistry.registerBlock(spawner, "spawner");
+    	GameRegistry.registerBlock(SilverOre, "SilverOre");    
     }
     
     public static CreativeTabs MinecraftRPGTab = new CreativeTabs("MinecraftRPG"){

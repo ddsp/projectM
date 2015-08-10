@@ -15,5 +15,6 @@ public class CraftingManager {
 	public static void addCraftingRecipes(){
 		
 		GameRegistry.addShapedRecipe(new ItemStack(MinecraftRPGitems.ReloadedSword), "   ", " S ", "   ", 'S', Items.apple);
+		GameRegistry.addShapedRecipe(new ItemStack(MinecraftRPGitems.SilverSword), "I", "I", "S", 'I', MinecraftRPGitems.SilverIngot, 'S', Items.stick);
 	}
 }

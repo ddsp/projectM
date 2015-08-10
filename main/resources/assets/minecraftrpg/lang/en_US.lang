@@ -1,4 +1,9 @@
 item.StrucFab.name=Tester
 item.SpiritWolfStaff.name=Spirit Wolf Staff
+item.ReloadedSword.name=Reloaded Sword
+item.SilverSword.name=Silver Sword
 entity.BlackWolf.name=Black Wolf
+tile.SilverOre.name=Silver Ore
+item.SilverIngot.name=Silver Ingot
+item.SilverSword.name=Silver Sword
 itemGroup.MinecraftRPG=Minecraft RPG
