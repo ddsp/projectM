@@ -18,6 +18,7 @@ public class MinecraftRPGBlocks {
     
     public static void initBlocks(){
     	spawner = new spawner(Material.rock).setHardness(1.5F).setBlockName("spawner").setCreativeTab(MinecraftRPGTab);
+    	 SilverOre = new SilverOre(Material.rock).setHardness(1.5F).setBlockName("SilverOre").setCreativeTab(MinecraftRPGTab);
     }
     
     public static void registerBlocks(){    	
