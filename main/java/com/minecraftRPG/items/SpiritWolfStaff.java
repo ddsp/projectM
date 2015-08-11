@@ -44,7 +44,7 @@ public class SpiritWolfStaff extends ItemSword{
 				cooldown = 60;
 			}
 		}else{
-			player.addChatComponentMessage(new ChatComponentText("This item is on cooldown."));
+			player.addChatComponentMessage(new ChatComponentText("This item is on cooldown "+ cooldown + "."));
 		}
 		
 		return itemStack;

@@ -2,6 +2,7 @@ package com.minecraftRPG.mobs;
 
 import com.minecraftRPG.items.SpiritWolfStaff;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,11 +56,11 @@ public class IvisiProj extends EntityThrowable
 		if (par1.entityHit instanceof EntityLivingBase)
 		{		
 			
-			EntitySpiritWolf wolf = new EntitySpiritWolf(world);
+			EntitySpiritWolf wolf = new EntitySpiritWolf(world, (EntityLiving)par1.entityHit);
 			wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
 			world.spawnEntityInWorld(wolf); 
 			
-			EntitySpiritWolf wolf2 = new EntitySpiritWolf(world);
+			EntitySpiritWolf wolf2 = new EntitySpiritWolf(world, (EntityLiving)par1.entityHit);
 			wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
 			world.spawnEntityInWorld(wolf2);
 			
