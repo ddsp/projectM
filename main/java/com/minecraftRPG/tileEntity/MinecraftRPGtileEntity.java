@@ -12,6 +12,8 @@ public class MinecraftRPGtileEntity {
 	}
 	
 	private static void registerTileEntities(){
-		GameRegistry.registerTileEntity(TileEntitySpawnerB.class, Strings.MODID);
+		GameRegistry.registerTileEntity(TileEntitySpawnerB.class, "tileSp");
+		GameRegistry.registerTileEntity(DarkRitual.class, "TileDarkRitual");
+		GameRegistry.registerTileEntity(AlterPedestalTileEntity.class, "AlterPedestalTE");
 	}
 }

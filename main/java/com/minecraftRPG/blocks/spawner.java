@@ -2,6 +2,7 @@ package com.minecraftRPG.blocks;
 
 import java.util.Random;
 
+import com.minecraftRPG.lib.Strings;
 import com.minecraftRPG.tileEntity.TileEntitySpawnerB;
 
 import net.minecraft.block.Block;
@@ -28,7 +29,7 @@ public class spawner extends BlockContainer {
 	@Override
 	public void registerBlockIcons(IIconRegister reg)
     {
-        this.blockIcon = reg.registerIcon("minecraftrpg:blockSpawner");
+        this.blockIcon = reg.registerIcon(Strings.IMGMODID+":blockSpawner");
     }
 
 	@Override

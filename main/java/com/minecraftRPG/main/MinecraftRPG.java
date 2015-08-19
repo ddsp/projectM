@@ -15,6 +15,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 
 @Mod(modid = Strings.MODID, name = Strings.NAME, version = Strings.VERSION)
 public class MinecraftRPG
@@ -45,7 +46,10 @@ public class MinecraftRPG
     
     
     @Mod.EventHandler
-    public void load(FMLInitializationEvent event) {}
+    public void load(FMLInitializationEvent event) 
+    {
+    	
+    }
  
     @Mod.EventHandler
     public void PostLoad(FMLPostInitializationEvent PostEvent) {}
