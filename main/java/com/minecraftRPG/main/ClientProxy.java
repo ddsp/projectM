@@ -26,7 +26,8 @@ public class ClientProxy extends ServerProxy{
 	public static final Map<Item, ModelBiped> armorModels = new HashMap<Item, ModelBiped>();
 	
 	public void registerRenderThings(){
-		
+		registerAmorRen();
+				
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackWolf.class, new RenderBlackWolf(new BlackWolf(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritWolf.class, new RenderSpiritWolf(new BlackWolf(), 0));
 		ClientRegistry.bindTileEntitySpecialRenderer(AlterPedestalTileEntity.class, new AlterPedestalRenderer());
