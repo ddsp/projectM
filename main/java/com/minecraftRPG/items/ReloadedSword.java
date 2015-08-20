@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 
 public class ReloadedSword extends ItemSword{
 	protected float weaponDamage;
-	public int reloaduses = 5;
 	public IIconRegister r;
 	
 	World world;
@@ -32,25 +31,18 @@ public class ReloadedSword extends ItemSword{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg){
-		if(reloaduses != 0)
-		{
-			this.itemIcon = reg.registerIcon("minecraftrpg:ActiveReloadSword");
-			reg.registerIcon("minecraftrpg:UnactiveReloadSword");
-		}
-		else
-		{
-			this.itemIcon = reg.registerIcon("minecraftrpg:UnactiveReloadSword");
-			this.weaponDamage = 0.0f;
-			this.getItemAttributeModifiers();
-		}
-		
+		this.itemIcon = reg.registerIcon("minecraftrpg:ActiveReloadSword");
+		reg.registerIcon("minecraftrpg:UnactiveReloadSword");
 		r = reg;
 	}
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
 	{	
+		int reloaduses = stack.getTagCompound().getInteger("currentCharge");
 		reloaduses = reloaduses - 1;
+		stack.stackTagCompound.setInteger("currentCharge", reloaduses);
+		this.addInformation(stack, null, stack.getTooltip((EntityPlayer) attacker, true), false);
 		World worldRef = ((EntityPlayer) attacker).worldObj;
 		if (!worldRef.isRemote)
 		{
@@ -59,7 +51,9 @@ public class ReloadedSword extends ItemSword{
 				if(target != null)
 				{
 					worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
-					this.registerIcons(r);
+					this.itemIcon = r.registerIcon("minecraftrpg:UnactiveReloadSword");
+					this.weaponDamage = 0.0f;
+					this.getItemAttributeModifiers();
 				}
 			}
 		}
@@ -76,14 +70,20 @@ public class ReloadedSword extends ItemSword{
 	
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-    	 stack.stackTagCompound = new NBTTagCompound();
-    	 stack.stackTagCompound.setInteger("currentCharge", reloaduses);
+		if( stack.stackTagCompound == null ){
+    	 stack.setTagCompound(new NBTTagCompound());
+    	 System.out.println("cheguei2");
+    	 stack.stackTagCompound.setInteger("currentCharge", 5);
+		}
+		System.out.println("cheguei");
     }
 
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer p_77624_2_, List list, boolean p_77624_4_) {
     	 if (stack.stackTagCompound != null) {
-             int charge = stack.stackTagCompound.getInteger("currentCharge");
-             list.add("Current Charge: " + charge);
+    		 int reloaduses = stack.stackTagCompound.getInteger("currentCharge");
+    		 System.out.println("cheguei3");
+             list.add("Current Charge: " + reloaduses);
     	 }
      }
 }
