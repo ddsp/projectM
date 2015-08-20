@@ -24,12 +24,13 @@ public class SilverOre  extends Block{
         this.blockIcon = reg.registerIcon("minecraftrpg:silverore");
     }
 	
+	@Override
 	public Item getItemDropped(int par1, Random rand, int par2){
-		return MinecraftRPGitems.SilverIngot;
+		return Item.getItemFromBlock(MinecraftRPGBlocks.SilverOre);
 	}
 	
 	public int quantityDropped(Random rand){
-		return rand.nextInt(3) + 1;
+		return 1;
 	}
 	
 	private Random rand = new Random();

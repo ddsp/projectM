@@ -73,8 +73,8 @@ public class MinecraftRPGArmorLeg extends ItemArmor{
 	}
 	
 	
-	@Override
+	/*@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer){		
 		return ;
-	}
+	}*/
 }
