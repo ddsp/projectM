@@ -125,26 +125,13 @@ public class ModelBlackPendragonArmorV3 extends ModelBiped
       Sword2Handle4.setTextureSize(128, 128);
       Sword2Handle4.mirror = true;
       setRotation(Sword2Handle4, 0F, 0F, -0.0349066F);
-  }
-  
-  public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-  {
-    super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    Sword1Base.render(f5);
-    Sword1End1.render(f5);
-    Sword1End2.render(f5);
-    Sword1Handle1.render(f5);
-    Sword1Handle2.render(f5);
-    Sword1Handle3.render(f5);
-    Sword1Handle4.render(f5);
-    Sword2Base.render(f5);
-    Sword2End1.render(f5);
-    Sword2End2.render(f5);
-    Sword2Handle1.render(f5);
-    Sword2Handle2.render(f5);
-    Sword2Handle3.render(f5);
-    Sword2Handle4.render(f5);
+      
+      this.bipedBody.addChild(Sword2Base);
+      Sword2Base.setRotationPoint(0F, 0F, 3.0F);
+      
+      this.bipedBody.addChild(Sword1Base);
+      Sword1Base.setRotationPoint(0F, 0F, 3.0F);
+      
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)

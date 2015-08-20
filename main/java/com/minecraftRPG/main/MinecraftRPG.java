@@ -1,5 +1,6 @@
 package com.minecraftRPG.main;
 
+import com.minecraftRPG.armor.MinecraftRPGArmor;
 import com.minecraftRPG.blocks.MinecraftRPGBlocks;
 import com.minecraftRPG.items.MinecraftRPGitems;
 import com.minecraftRPG.lib.Strings;
@@ -44,6 +45,7 @@ public class MinecraftRPG
     	
     	MinecraftRPGtileEntity.mainRegistry();
     	MinecraftRPGEntitys.mainRegistry();
+    	MinecraftRPGArmor.mainRegistry();
     	
     	proxy.registerRenderThings();
     }
