@@ -6,6 +6,7 @@ import com.minecraftRPG.lib.Strings;
 import com.minecraftRPG.mobs.MinecraftRPGEntitys;
 import com.minecraftRPG.structures.Structures;
 import com.minecraftRPG.tileEntity.MinecraftRPGtileEntity;
+import com.minecraftRPG.world.MinecraftRPGWorldGenOre;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Metadata;
@@ -35,9 +36,12 @@ public class MinecraftRPG
     @Mod.EventHandler
     public void PreLoad(FMLPreInitializationEvent  PreEvent) {
     	GameRegistry.registerWorldGenerator(new Structures(), 0);
+    	MinecraftRPGWorldGenOre.mainRegistry();
+    	
     	MinecraftRPGitems.mainRegistry();
     	MinecraftRPGBlocks.mainRegistry();
     	CraftingManager.mainRegistry();
+    	
     	MinecraftRPGtileEntity.mainRegistry();
     	MinecraftRPGEntitys.mainRegistry();
     	

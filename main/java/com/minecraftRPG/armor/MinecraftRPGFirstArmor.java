@@ -16,17 +16,32 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-public class MinecraftRPGArmorLeg extends ItemArmor{ 
+public class MinecraftRPGFirstArmor extends ItemArmor{ 
 	
-	public MinecraftRPGArmorLeg(ArmorMaterial material, int render_idx, int type) {
+	public MinecraftRPGFirstArmor(ArmorMaterial material, int render_idx, int type) {
 		super(material, render_idx, type);
 		this.setMaxStackSize(1);
 	}
 	
+	@Override
+	public String getUnlocalizedName(){
+		return String.format("item.%s%s", Strings.IMGMODID+":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+		
+	}
+	
+	@Override
+	public String getUnlocalizedName(ItemStack itemstack){
+		return String.format("item.%s%s", Strings.IMGMODID+":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
+	
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName){		
+		return unlocalizedName.substring(unlocalizedName.indexOf('.') + 1);
+	}
+	
 	@Override 
 	@SideOnly(Side.CLIENT) 
-	public void registerIcons(IIconRegister par1IconRegister) { 
-		this.itemIcon = par1IconRegister.registerIcon(Strings.IMGMODID+":blockSpawner"); 
+	public void registerIcons(IIconRegister iconRegister) { 
+		this.itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf('.') + 1)); 
 	}
 	
 	@Override
@@ -75,6 +90,6 @@ public class MinecraftRPGArmorLeg extends ItemArmor{
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer){		
-		return ;
+		return null;
 	}
 }

@@ -2,8 +2,8 @@ package com.minecraftRPG.tileEntity;
 
 import org.lwjgl.opengl.GL11;
 
-import com.minecraftRPG.blocks.AlterPedestalModel;
 import com.minecraftRPG.lib.Strings;
+import com.minecraftRPG.models.AlterPedestalModel;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

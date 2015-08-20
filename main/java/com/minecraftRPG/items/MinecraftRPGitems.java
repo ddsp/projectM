@@ -10,7 +10,7 @@ import net.minecraft.item.ItemSword;
 
 public class MinecraftRPGitems {
 	
-	public static ToolMaterial enumToolMaterialMinecraftRPG = EnumHelper.addToolMaterial("MinecraftRPG", 3, 3000, 11.0F, 5.0F, 30);
+	public static ToolMaterial enumToolMaterialMinecraftRPG = EnumHelper.addToolMaterial("MinecraftRPGItems", 3, 3000, 11.0F, 5.0F, 30);
 	
 	public static void mainRegistry(){
 		initItems();

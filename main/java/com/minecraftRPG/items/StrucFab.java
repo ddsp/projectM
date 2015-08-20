@@ -1,7 +1,7 @@
 package com.minecraftRPG.items;
 
-import com.minecraftRPG.mobs.BlackWolf;
 import com.minecraftRPG.mobs.EntityBlackWolf;
+import com.minecraftRPG.models.BlackWolf;
 import com.minecraftRPG.structures.test;
 
 import cpw.mods.fml.relauncher.Side;
