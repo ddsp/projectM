@@ -10,7 +10,7 @@ import com.minecraftRPG.mobs.EntitySpiritWolf;
 import com.minecraftRPG.mobs.RenderBlackWolf;
 import com.minecraftRPG.mobs.RenderSpiritWolf;
 import com.minecraftRPG.models.BlackWolf;
-import com.minecraftRPG.models.ModelBlackPendragonArmorV3;
+import com.minecraftRPG.models.ModelBlackPendragonArmorV4;
 import com.minecraftRPG.tileEntity.AlterPedestalRenderer;
 import com.minecraftRPG.tileEntity.AlterPedestalTileEntity;
 
@@ -34,8 +34,8 @@ public class ClientProxy extends ServerProxy{
 	}
 	
 	public void registerAmorRen(){
-		ModelBlackPendragonArmorV3 custom_armor = new ModelBlackPendragonArmorV3(1F);
-		ModelBlackPendragonArmorV3 custom_legs = new ModelBlackPendragonArmorV3(0.5F);
+		ModelBlackPendragonArmorV4 custom_armor = new ModelBlackPendragonArmorV4(1F);
+		ModelBlackPendragonArmorV4 custom_legs = new ModelBlackPendragonArmorV4(0.5F);
 		
 		armorModels.put(MinecraftRPGArmor.first_helm, custom_armor);
 		armorModels.put(MinecraftRPGArmor.first_body, custom_armor);

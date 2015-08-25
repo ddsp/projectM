@@ -9,17 +9,24 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class CraftingManager {
+	
+	static ItemStack SilverOre;
+	static ItemStack SilverIngot;
+	
 	public static void mainRegistry(){
+		SilverOre = new ItemStack(MinecraftRPGBlocks.SilverOre);
+		SilverIngot = new ItemStack(MinecraftRPGitems.SilverIngot);
+		
 		addCraftingRecipes();
+		addSmeltingRecipies();
 	}
 	
-	public static void addCraftingRecipes(){
-		
-		ItemStack SilverOre = new ItemStack(MinecraftRPGBlocks.SilverOre);
-		ItemStack SilverIngot = new ItemStack(MinecraftRPGitems.SilverIngot);
-		
+	public static void addCraftingRecipes(){		
 		GameRegistry.addShapedRecipe(new ItemStack(MinecraftRPGitems.ReloadedSword), "   ", " S ", "   ", 'S', Items.apple);
 		GameRegistry.addShapedRecipe(new ItemStack(MinecraftRPGitems.SilverSword), "I", "I", "S", 'I', MinecraftRPGitems.SilverIngot, 'S', Items.stick);
+	}
+	
+	public static void addSmeltingRecipies() {
 		GameRegistry.addSmelting(SilverOre, SilverIngot, 0.5f);
 	}
 }
