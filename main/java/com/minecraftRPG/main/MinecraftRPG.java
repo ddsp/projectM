@@ -22,8 +22,8 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 @Mod(modid = Strings.MODID, name = Strings.NAME, version = Strings.VERSION)
 public class MinecraftRPG
 {
-    public static final String MODID = "minecraftRPG";
-    public static final String VERSION = "0.1";
+    public static final String MODID = Strings.MODID;
+    public static final String VERSION = Strings.VERSION;
     
     @SidedProxy(clientSide = "com.minecraftRPG.main.ClientProxy", serverSide = "com.minecraftRPG.ServerProxy")
     public static ServerProxy proxy;

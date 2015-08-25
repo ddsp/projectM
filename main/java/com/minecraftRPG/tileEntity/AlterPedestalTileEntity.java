@@ -1,6 +1,7 @@
 package com.minecraftRPG.tileEntity;
 
 import com.minecraftRPG.blocks.AlterPedestal;
+import com.minecraftRPG.handler.MinecraftRPGFurnaceRecipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -33,7 +34,7 @@ public class AlterPedestalTileEntity extends TileEntity  implements ISidedInvent
 
 	private String furnaceName;
 	
-	public AlterPedestalTileEntity(String string){
+	public void furnaceName(String string){
 		this.furnaceName = string;
 	}
 
@@ -212,7 +213,7 @@ public class AlterPedestalTileEntity extends TileEntity  implements ISidedInvent
 		if (this.furnaceItemStacks[0] == null) {
 			return false;
 		} else {
-			ItemStack itemstack = TutFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+			ItemStack itemstack = MinecraftRPGFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
 			if (itemstack == null) return false;
 			if (this.furnaceItemStacks[2] == null) return true;
 			if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
@@ -223,7 +224,7 @@ public class AlterPedestalTileEntity extends TileEntity  implements ISidedInvent
 
 	public void smeltItem() {
 		if (this.canSmelt()) {
-			ItemStack itemstack = TutFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+			ItemStack itemstack = MinecraftRPGFurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
 
 			if (this.furnaceItemStacks[2] == null) {
 				this.furnaceItemStacks[2] = itemstack.copy();
@@ -248,16 +249,12 @@ public class AlterPedestalTileEntity extends TileEntity  implements ISidedInvent
 			if(item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air){
 				Block block = Block.getBlockFromItem(item);
 				
-				if(block == TMBlock.tutBlock){
-					return 200;
-				}
-				
 				if(block.getMaterial() == Material.rock){
 					return 300;
 				}
 			}
 			
-			if(item == TMItem.tutItem) return 1600;
+			//if(item == TMItem.tutItem) return 1600;
 			if(item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("EMERALD")) return 300;
 			return GameRegistry.getFuelValue(itemstack);
 		}
