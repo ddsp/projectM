@@ -157,8 +157,16 @@ public class ModelBlackPendragonArmorV4 extends ModelBiped
       SholderLeft.mirror = true;
       setRotation(SholderLeft, 0F, 0F, 0F);
       
-      this.bipedBody.addChild(SholderRight);
-      this.bipedBody.addChild(SholderLeft);
+      this.bipedHead.addChild(Helmet);
+      this.bipedRightArm.addChild(SholderRight);
+      this.bipedLeftArm.addChild(SholderLeft);
+      this.bipedBody.addChild(Sword1Base);
+      this.bipedBody.addChild(Sword1End1);
+      this.bipedBody.addChild(Sword1End2);
+      this.bipedBody.addChild(Sword1Handle1);
+      this.bipedBody.addChild(Sword1Handle2);
+      this.bipedBody.addChild(Sword1Handle3);
+      this.bipedBody.addChild(Sword1Handle4);
       
       
   }
@@ -167,24 +175,6 @@ public class ModelBlackPendragonArmorV4 extends ModelBiped
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    Sword1Base.render(f5);
-    Sword1End1.render(f5);
-    Sword1End2.render(f5);
-    Sword1Handle1.render(f5);
-    Sword1Handle2.render(f5);
-    Sword1Handle3.render(f5);
-    Sword1Handle4.render(f5);
-    Sword2Base.render(f5);
-    Sword2End1.render(f5);
-    Sword2End2.render(f5);
-    Sword2Handle1.render(f5);
-    Sword2Handle2.render(f5);
-    Sword2Handle3.render(f5);
-    Sword2Handle4.render(f5);
-    Helmet.render(f5);
-    Chest.render(f5);
-    SholderRight.render(f5);
-    SholderLeft.render(f5);
   }
   
   public void render1(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)

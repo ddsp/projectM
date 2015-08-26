@@ -39,8 +39,15 @@ public class ReloadedSword extends ItemSword{
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
 	{	
-		int reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		int reloaduses = 5;
+		
+		if (stack.stackTagCompound != null) {
+			reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		}else{
+			stack.setTagCompound(new NBTTagCompound());
+		}
 		reloaduses = reloaduses - 1;
+		System.out.println(reloaduses);
 		stack.stackTagCompound.setInteger("currentCharge", reloaduses);
 		this.addInformation(stack, null, stack.getTooltip((EntityPlayer) attacker, true), false);
 		World worldRef = ((EntityPlayer) attacker).worldObj;

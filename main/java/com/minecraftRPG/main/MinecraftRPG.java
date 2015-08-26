@@ -54,7 +54,7 @@ public class MinecraftRPG
     @Mod.EventHandler
     public void load(FMLInitializationEvent event) 
     {
-    	
+    	proxy.registerNetworkStuff();
     }
  
     @Mod.EventHandler
