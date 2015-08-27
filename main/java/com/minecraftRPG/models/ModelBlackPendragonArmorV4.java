@@ -31,103 +31,54 @@ public class ModelBlackPendragonArmorV4 extends ModelBiped
   {
 	  super(expand, 0, 128, 128);
     
-      Sword1Base = new ModelRenderer(this, 8, 36);
-      Sword1Base.addBox(-9.5F, 17.5F, 2.5F, 20, 1, 1);
+	  Sword1Base = new ModelRenderer(this, 8, 33);
+      Sword1Base.addBox(-5F, 15.5F, -2.5F, 1, 1, 18);
       Sword1Base.setRotationPoint(0F, 0F, 0F);
       Sword1Base.setTextureSize(128, 128);
       Sword1Base.mirror = true;
-      setRotation(Sword1Base, 0F, 0F, 0F);
+      setRotation(Sword1Base, -0.3665191F, 0F, 0F);
       
       Sword1End1 = new ModelRenderer(this, 53, 34);
-      Sword1End1.addBox(-11.5F, 17.6F, 2.5F, 2, 1, 1);
+      Sword1End1.addBox(-5F, 15.6F, 15.5F, 1, 1, 2);
       Sword1End1.setRotationPoint(0F, 0F, 0F);
       Sword1End1.setTextureSize(128, 128);
       Sword1End1.mirror = true;
-      setRotation(Sword1End1, 0F, 0F, 0F);
+      setRotation(Sword1End1, -0.3665191F, 0F, 0F);
       
-      Sword1End2 = new ModelRenderer(this, 53, 37);
-      Sword1End2.addBox(-11.5F, 17.4F, 2.5F, 2, 1, 1);
+      Sword1End2 = new ModelRenderer(this, 53, 39);
+      Sword1End2.addBox(-5F, 15.4F, 15.5F, 1, 1, 2);
       Sword1End2.setRotationPoint(0F, 0F, 0F);
       Sword1End2.setTextureSize(128, 128);
       Sword1End2.mirror = true;
-      setRotation(Sword1End2, 0F, 0F, 0F);
+      setRotation(Sword1End2, -0.3665191F, 0F, 0F);
       
-      Sword1Handle1 = new ModelRenderer(this, 60, 34);
-      Sword1Handle1.addBox(10F, 17.6F, 2.5F, 4, 1, 1);
+      Sword1Handle1 = new ModelRenderer(this, 75, 34);
+      Sword1Handle1.addBox(-5F, 15.6F, -6.5F, 1, 1, 4);
       Sword1Handle1.setRotationPoint(0F, 0F, 0F);
       Sword1Handle1.setTextureSize(128, 128);
       Sword1Handle1.mirror = true;
-      setRotation(Sword1Handle1, 0F, 0F, 0F);
+      setRotation(Sword1Handle1, -0.3665191F, 0F, 0F);
       
-      Sword1Handle2 = new ModelRenderer(this, 60, 37);
-      Sword1Handle2.addBox(10F, 17.4F, 2.5F, 4, 1, 1);
+      Sword1Handle2 = new ModelRenderer(this, 87, 37);
+      Sword1Handle2.addBox(-5F, 15.4F, -6.5F, 1, 1, 4);
       Sword1Handle2.setRotationPoint(0F, 0F, 0F);
       Sword1Handle2.setTextureSize(128, 128);
       Sword1Handle2.mirror = true;
-      setRotation(Sword1Handle2, 0F, 0F, 0F);
+      setRotation(Sword1Handle2, -0.3665191F, 0F, 0F);
       
-      Sword1Handle3 = new ModelRenderer(this, 60, 40);
-      Sword1Handle3.addBox(10F, 17.5F, 2.6F, 4, 1, 1);
+      Sword1Handle3 = new ModelRenderer(this, 75, 40);
+      Sword1Handle3.addBox(-5.1F, 15.5F, -6.5F, 1, 1, 4);
       Sword1Handle3.setRotationPoint(0F, 0F, 0F);
       Sword1Handle3.setTextureSize(128, 128);
       Sword1Handle3.mirror = true;
-      setRotation(Sword1Handle3, 0F, 0F, 0F);
+      setRotation(Sword1Handle3, -0.3665191F, 0F, 0F);
       
-      Sword1Handle4 = new ModelRenderer(this, 60, 43);
-      Sword1Handle4.addBox(10F, 17.5F, 2.4F, 4, 1, 1);
+      Sword1Handle4 = new ModelRenderer(this, 87, 43);
+      Sword1Handle4.addBox(-4.9F, 15.5F, -6.5F, 1, 1, 4);
       Sword1Handle4.setRotationPoint(0F, 0F, 0F);
       Sword1Handle4.setTextureSize(128, 128);
       Sword1Handle4.mirror = true;
-      setRotation(Sword1Handle4, 0, 0F, 0F);
-      
-      Sword2Base = new ModelRenderer(this, 8, 49);
-      Sword2Base.addBox(-10F, 15.5F, 2.5F, 20, 1, 1);
-      Sword2Base.setRotationPoint(0F, 0F, 0F);
-      Sword2Base.setTextureSize(128, 128);
-      Sword2Base.mirror = true;
-      setRotation(Sword2Base, 0F, 0F, -0.0349066F);
-      
-      Sword2End1 = new ModelRenderer(this, 53, 49);
-      Sword2End1.addBox(-12F, 15.6F, 2.5F, 2, 1, 1);
-      Sword2End1.setRotationPoint(0F, 0F, 0F);
-      Sword2End1.setTextureSize(128, 128);
-      Sword2End1.mirror = true;
-      setRotation(Sword2End1, 0F, 0F, -0.0349066F);
-      
-      Sword2End2 = new ModelRenderer(this, 53, 53);
-      Sword2End2.addBox(-12F, 15.4F, 2.5F, 2, 1, 1);
-      Sword2End2.setRotationPoint(0F, 0F, 0F);
-      Sword2End2.setTextureSize(128, 128);
-      Sword2End2.mirror = true;
-      setRotation(Sword2End2, 0F, 0F, -0.0349066F);
-      
-      Sword2Handle1 = new ModelRenderer(this, 62, 49);
-      Sword2Handle1.addBox(9.5F, 15.6F, 2.5F, 4, 1, 1);
-      Sword2Handle1.setRotationPoint(0F, 0F, 0F);
-      Sword2Handle1.setTextureSize(128, 128);
-      Sword2Handle1.mirror = true;
-      setRotation(Sword2Handle1, 0F, 0F, -0.0349066F);
-      
-      Sword2Handle2 = new ModelRenderer(this, 62, 52);
-      Sword2Handle2.addBox(9.5F, 15.4F, 2.5F, 4, 1, 1);
-      Sword2Handle2.setRotationPoint(0F, 0F, 0F);
-      Sword2Handle2.setTextureSize(128, 128);
-      Sword2Handle2.mirror = true;
-      setRotation(Sword2Handle2, 0F, 0F, -0.0349066F);
-      
-      Sword2Handle3 = new ModelRenderer(this, 62, 55);
-      Sword2Handle3.addBox(9.5F, 15.5F, 2.4F, 4, 1, 1);
-      Sword2Handle3.setRotationPoint(0F, 0F, 0F);
-      Sword2Handle3.setTextureSize(128, 128);
-      Sword2Handle3.mirror = true;
-      setRotation(Sword2Handle3, 0F, 0F, -0.0349066F);
-      
-      Sword2Handle4 = new ModelRenderer(this, 62, 58);
-      Sword2Handle4.addBox(9.5F, 15.5F, 2.6F, 4, 1, 1);
-      Sword2Handle4.setRotationPoint(0F, 0F, 0F);
-      Sword2Handle4.setTextureSize(128, 128);
-      Sword2Handle4.mirror = true;
-      setRotation(Sword2Handle4, 0F, 0F, -0.0349066F);
+      setRotation(Sword1Handle4, -0.3665191F, 0F, 0F);
       
       Helmet = new ModelRenderer(this, 0, 57);
       Helmet.addBox(-4.5F, -8.5F, -4.5F, 9, 9, 9);
