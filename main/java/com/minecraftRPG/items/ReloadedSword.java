@@ -1,6 +1,6 @@
 package com.minecraftRPG.items;
 
-import java.awt.List;
+import java.util.List;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -8,6 +8,7 @@ import com.google.common.collect.Multimap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -15,13 +16,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class ReloadedSword extends ItemSword{
 	protected float weaponDamage;
-	public IIconRegister r;
-	
-	World world;
+	IIcon reloadedSword;
+	IIcon unreloadedSword;
 	
 	public ReloadedSword(ToolMaterial mat, float damage) {
 		super(mat);
@@ -31,66 +32,75 @@ public class ReloadedSword extends ItemSword{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg){
-		this.itemIcon = reg.registerIcon("minecraftrpg:ActiveReloadSword");
-		reg.registerIcon("minecraftrpg:UnactiveReloadSword");
-		r = reg;
+		reloadedSword = reg.registerIcon("minecraftrpg:ActiveReloadSword");
+		unreloadedSword = reg.registerIcon("minecraftrpg:UnactiveReloadSword");
 	}
+	
+	 @Override
+     @SideOnly(Side.CLIENT)
+     public IIcon getIconIndex(ItemStack stack) {
+			
+			int reloaduses = stack.getTagCompound().getInteger("currentCharge");
+			
+			if(reloaduses > 0){
+				this.itemIcon = reloadedSword;
+				return reloadedSword;
+			}else{
+				this.itemIcon = unreloadedSword;
+				return unreloadedSword;
+			}
+     }
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
 	{	
-		int reloaduses = 5;
-		
-		if (stack.stackTagCompound != null) {
-			reloaduses = stack.getTagCompound().getInteger("currentCharge");
-		}else{
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		reloaduses = reloaduses - 1;
-		System.out.println(reloaduses);
-		stack.stackTagCompound.setInteger("currentCharge", reloaduses);
-		this.addInformation(stack, null, stack.getTooltip((EntityPlayer) attacker, true), false);
-		World worldRef = ((EntityPlayer) attacker).worldObj;
-		if (!worldRef.isRemote)
-		{
-			if (reloaduses == 0)
+		int reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		if(reloaduses > 0){
+			
+			 
+			reloaduses = reloaduses - 1;
+			stack.stackTagCompound.setInteger("currentCharge", reloaduses);
+			World worldRef = ((EntityPlayer) attacker).worldObj;
+			if (!worldRef.isRemote)
 			{
-				if(target != null)
+				if (reloaduses == 0)
 				{
-					worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
-					this.itemIcon = r.registerIcon("minecraftrpg:UnactiveReloadSword");
-					this.weaponDamage = 0.0f;
-					this.getItemAttributeModifiers();
+					if(target != null)
+					{
+						worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
+						/*this.weaponDamage = 0.0f;
+						this.getItemAttributeModifiers();*/
+					}
 				}
 			}
 		}
-		
 		return true;
 	}
 	
 	@Override
-	public Multimap getItemAttributeModifiers(){
-		Multimap multimap = HashMultimap.create();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier",  (double) this.weaponDamage, 0));
-		return multimap;
-	}
+    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		stack.stackTagCompound = new NBTTagCompound(); 
+		stack.stackTagCompound.setInteger("currentCharge", 5);
+    }
 	
 	@Override
-    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if( stack.stackTagCompound == null ){
-    	 stack.setTagCompound(new NBTTagCompound());
-    	 System.out.println("cheguei2");
-    	 stack.stackTagCompound.setInteger("currentCharge", 5);
-		}
-		System.out.println("cheguei");
+	public Multimap getItemAttributeModifiers()
+    {
+        Multimap multimap = super.getItemAttributeModifiers();
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
+        return multimap;
     }
 
+// adds 'tooltip' text
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer p_77624_2_, List list, boolean p_77624_4_) {
     	 if (stack.stackTagCompound != null) {
     		 int reloaduses = stack.stackTagCompound.getInteger("currentCharge");
-    		 System.out.println("cheguei3");
              list.add("Current Charge: " + reloaduses);
+    	 }else{
+    		 stack.stackTagCompound = new NBTTagCompound(); 
+    		 stack.stackTagCompound.setInteger("currentCharge", 5);
     	 }
      }
 }
