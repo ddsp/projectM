@@ -11,6 +11,7 @@ import net.minecraft.item.ItemSword;
 public class MinecraftRPGitems {
 	
 	public static ToolMaterial enumToolMaterialMinecraftRPG = EnumHelper.addToolMaterial("MinecraftRPGItems", 3, 3000, 11.0F, 5.0F, 30);
+	public static ToolMaterial enumToolMaterialMinecraftRPGRS = EnumHelper.addToolMaterial("MinecraftRPGItems", 0, 3000, 0.0F, -4.0F, 30);
 	
 	public static void mainRegistry(){
 		initItems();
@@ -29,7 +30,7 @@ public class MinecraftRPGitems {
 		SilverIngot = new SilverIngot().setUnlocalizedName("SilverIngot").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		strucFab = new StrucFab().setUnlocalizedName("StrucFab").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		spiritWStaff = new SpiritWolfStaff(enumToolMaterialMinecraftRPG, 3).setUnlocalizedName("SpiritWolfStaff").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
-		ReloadedSword = new ReloadedSword(enumToolMaterialMinecraftRPG, 10).setUnlocalizedName("ReloadedSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
+		ReloadedSword = new ReloadedSword(enumToolMaterialMinecraftRPGRS, -2).setUnlocalizedName("ReloadedSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		SilverSword = new SilverSword(enumToolMaterialMinecraftRPG, 5).setUnlocalizedName("SilverSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		CostumBook = new CostumBook().setUnlocalizedName("CostumBook").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 	}

@@ -36,20 +36,23 @@ public class ReloadedSword extends ItemSword{
 		unreloadedSword = reg.registerIcon("minecraftrpg:UnactiveReloadSword");
 	}
 	
-	 @Override
-     @SideOnly(Side.CLIENT)
-     public IIcon getIconIndex(ItemStack stack) {
-			
-			int reloaduses = stack.getTagCompound().getInteger("currentCharge");
-			
-			if(reloaduses > 0){
-				this.itemIcon = reloadedSword;
-				return reloadedSword;
-			}else{
-				this.itemIcon = unreloadedSword;
-				return unreloadedSword;
-			}
-     }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconIndex(ItemStack stack) {
+		int reloaduses = 5;
+		
+		if (stack.stackTagCompound != null) {
+			reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		}
+		
+		if(reloaduses > 0){
+			this.itemIcon = reloadedSword;
+			return reloadedSword;
+		}else{
+			this.itemIcon = unreloadedSword;
+			return unreloadedSword;
+		}
+	}
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
@@ -68,14 +71,14 @@ public class ReloadedSword extends ItemSword{
 					if(target != null)
 					{
 						worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
-						/*this.weaponDamage = 0.0f;
-						this.getItemAttributeModifiers();*/
+						this.weaponDamage = 0.0f;
 					}
 				}
 			}
 		}
 		return true;
 	}
+
 	
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
@@ -83,13 +86,24 @@ public class ReloadedSword extends ItemSword{
 		stack.stackTagCompound.setInteger("currentCharge", 5);
     }
 	
+	//https://www.youtube.com/watch?v=8WpEPQtPsTc
+	
+	/*@Override
+	public Multimap getAttributeModifiers(ItemStack stack)
+    {
+        Multimap multimap = super.getItemAttributeModifiers();
+        System.out.println(multimap.size());        
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 3, 0));
+        return multimap;
+    }
+	
 	@Override
 	public Multimap getItemAttributeModifiers()
     {
         Multimap multimap = super.getItemAttributeModifiers();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.field_150934_a, 0));
         return multimap;
-    }
+    }*/
 
 // adds 'tooltip' text
 	@Override
