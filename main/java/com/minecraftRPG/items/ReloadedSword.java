@@ -1,8 +1,8 @@
 package com.minecraftRPG.items;
 
 import java.util.List;
+import java.util.Random;
 
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.Side;
@@ -55,15 +55,31 @@ public class ReloadedSword extends ItemSword{
 	}
 	
 	@Override
+	public void onUpdate(ItemStack stack, World par2World, Entity par3Entity, int par4, boolean par5) {
+		if(stack.stackTagCompound.getBoolean("using")){
+			int time = stack.stackTagCompound.getInteger("time") - 1;
+			if(time > 0){
+				stack.stackTagCompound.setInteger("time", time);
+			}else{
+				stack.stackTagCompound.setInteger("time", 100);
+				stack.stackTagCompound.setBoolean("using", false);
+			}
+		}
+	}
+	
+	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
 	{	
 		int reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		World worldRef = ((EntityPlayer) attacker).worldObj;
 		if(reloaduses > 0){
-			
-			 
-			reloaduses = reloaduses - 1;
+			if(!stack.stackTagCompound.getBoolean("using")){
+				reloaduses = reloaduses - 1;
+				if(reloaduses > 0){
+				stack.stackTagCompound.setBoolean("using", true);
+				}
+			}
 			stack.stackTagCompound.setInteger("currentCharge", reloaduses);
-			World worldRef = ((EntityPlayer) attacker).worldObj;
 			if (!worldRef.isRemote)
 			{
 				if (reloaduses == 0)
@@ -71,7 +87,6 @@ public class ReloadedSword extends ItemSword{
 					if(target != null)
 					{
 						worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
-						this.weaponDamage = 0.0f;
 					}
 				}
 			}
@@ -84,20 +99,27 @@ public class ReloadedSword extends ItemSword{
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		stack.stackTagCompound = new NBTTagCompound(); 
 		stack.stackTagCompound.setInteger("currentCharge", 5);
+		stack.stackTagCompound.setInteger("time", 100);
+		stack.stackTagCompound.setBoolean("using", false);
     }
 	
 	//https://www.youtube.com/watch?v=8WpEPQtPsTc
 	
-	/*@Override
+	@Override
 	public Multimap getAttributeModifiers(ItemStack stack)
     {
-        Multimap multimap = super.getItemAttributeModifiers();
-        System.out.println(multimap.size());        
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 3, 0));
+        Multimap multimap = super.getItemAttributeModifiers(); 
+        multimap.clear();
+        int reloaduses = stack.getTagCompound().getInteger("currentCharge");
+		if(reloaduses > 0){
+			multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.weaponDamage, 0));
+		}else{
+			multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 1, 0));
+		}
         return multimap;
     }
 	
-	@Override
+	/*@Override
 	public Multimap getItemAttributeModifiers()
     {
         Multimap multimap = super.getItemAttributeModifiers();
@@ -112,9 +134,15 @@ public class ReloadedSword extends ItemSword{
     	 if (stack.stackTagCompound != null) {
     		 int reloaduses = stack.stackTagCompound.getInteger("currentCharge");
              list.add("Current Charge: " + reloaduses);
+             if(stack.stackTagCompound.getBoolean("using")){
+            	 int time = stack.stackTagCompound.getInteger("time")/20;
+            	 list.add("Cooldown: " + time);
+             }
     	 }else{
     		 stack.stackTagCompound = new NBTTagCompound(); 
     		 stack.stackTagCompound.setInteger("currentCharge", 5);
+    		 stack.stackTagCompound.setInteger("time", 100);
+    		 stack.stackTagCompound.setBoolean("using", false);
     	 }
      }
 }
