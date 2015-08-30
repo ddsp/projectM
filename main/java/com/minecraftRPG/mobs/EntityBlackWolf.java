@@ -11,7 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 public class EntityBlackWolf extends EntityWolf {
-
+	
 	public EntityBlackWolf(World par1World) {
 		super(par1World);
 		this.setSize(1F, 1F);

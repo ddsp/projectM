@@ -1,6 +1,7 @@
 package com.minecraftRPG.items;
 
 import com.minecraftRPG.mobs.EntityBlackWolf;
+import com.minecraftRPG.mobs.MultiMobTest;
 import com.minecraftRPG.models.BlackWolf;
 import com.minecraftRPG.structures.test;
 
@@ -27,9 +28,7 @@ public class StrucFab extends Item{
 	{
 		if (!world.isRemote)
 		{
-			EntityBlackWolf wolf = new EntityBlackWolf(world);
-			wolf.setLocationAndAngles(x, y+2, z,world.rand.nextFloat() * 360.0F, 0.0F);
-			world.spawnEntityInWorld(wolf);
+			MultiMobTest wolf = new MultiMobTest(world,x, y+1, z);
 		}
         return false;
     }
