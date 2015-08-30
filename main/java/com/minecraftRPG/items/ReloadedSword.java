@@ -55,11 +55,14 @@ public class ReloadedSword extends ItemSword{
 	}
 	
 	@Override
-	public void onUpdate(ItemStack stack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
 		if(stack.stackTagCompound.getBoolean("using")){
 			int time = stack.stackTagCompound.getInteger("time") - 1;
 			if(time > 0){
 				stack.stackTagCompound.setInteger("time", time);
+				if(world.isRemote){
+					world.spawnParticle("slime", player.posX, player.posY, player.posZ, 0, +1, 0);
+				}
 			}else{
 				stack.stackTagCompound.setInteger("time", 100);
 				stack.stackTagCompound.setBoolean("using", false);
@@ -93,7 +96,6 @@ public class ReloadedSword extends ItemSword{
 		}
 		return true;
 	}
-
 	
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
@@ -102,8 +104,6 @@ public class ReloadedSword extends ItemSword{
 		stack.stackTagCompound.setInteger("time", 100);
 		stack.stackTagCompound.setBoolean("using", false);
     }
-	
-	//https://www.youtube.com/watch?v=8WpEPQtPsTc
 	
 	@Override
 	public Multimap getAttributeModifiers(ItemStack stack)
@@ -118,16 +118,8 @@ public class ReloadedSword extends ItemSword{
 		}
         return multimap;
     }
-	
-	/*@Override
-	public Multimap getItemAttributeModifiers()
-    {
-        Multimap multimap = super.getItemAttributeModifiers();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.field_150934_a, 0));
-        return multimap;
-    }*/
 
-// adds 'tooltip' text
+	// adds 'tooltip' text
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer p_77624_2_, List list, boolean p_77624_4_) {
