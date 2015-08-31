@@ -37,7 +37,7 @@ public class GuiAltar extends GuiContainer{
 	        this.mc.getTextureManager().bindTexture(furnaceGuiTextures);
 	        int k = (this.width - this.xSize) / 2;
 	        int l = (this.height - this.ySize) / 2;
-	        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+	        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize); //When Active
 	        int i1;
 
 	        if (this.tileAltar.isBurning())

@@ -61,7 +61,7 @@ public class ReloadedSword extends ItemSword{
 			if(time > 0){
 				stack.stackTagCompound.setInteger("time", time);
 				if(world.isRemote){
-					world.spawnParticle("slime", player.posX, player.posY, player.posZ, 0, +1, 0);
+					world.spawnParticle("instantSpell", player.posX, player.posY-1, player.posZ-2, 0, 0, 0);
 				}
 			}else{
 				stack.stackTagCompound.setInteger("time", 100);

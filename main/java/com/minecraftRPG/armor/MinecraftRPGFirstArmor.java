@@ -90,6 +90,6 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer){	
-		return Strings.IMGMODID+":textures/models/armor/BlackPendragonArmorV5.png";
+		return Strings.IMGMODID+":textures/models/armor/BlackPendragonArmorV5_2.png";
 	}
 }

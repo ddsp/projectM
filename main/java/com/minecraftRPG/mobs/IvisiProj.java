@@ -27,9 +27,7 @@ public class IvisiProj extends EntityThrowable
 		super(par1World, par2EntityLivingBase);
 		player = (EntityPlayer) par2EntityLivingBase;
 		world = par1World;
-		if(p  == null){
-			System.out.println("cheguei2");
-		}else{
+		if(p  != null){
 			father = p;
 		}
 	}

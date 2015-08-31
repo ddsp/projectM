@@ -29,7 +29,8 @@ public class MultiMobTest{
 	public void update(){
 		int s = 1;
 		for(EntitySpiritWolf part: parts){
-			part.setPosition(posX + s, posY + 10, posZ);
+			part.setPositionAndUpdate(posX + s, posY + 10, posZ);
+			part.motionY = 0;
 			s++;
 		}
 	}

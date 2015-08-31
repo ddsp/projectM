@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class EntitySpiritWolf extends EntityCreature {
 
-	MultiMobTest father;
+	public MultiMobTest father;
 	boolean center;
 	
 	public EntitySpiritWolf(World par1World) {
@@ -35,6 +35,7 @@ public class EntitySpiritWolf extends EntityCreature {
 		this.setSize(1F, 1F);
 		father = t;
 		center = centerr;
+		this.setJumping(false);
 		this.tasks.addTask(0, new EntityAIWander(this, 0.0D));
 	}
 	
@@ -60,7 +61,7 @@ public class EntitySpiritWolf extends EntityCreature {
 	@Override
 	public boolean isAIEnabled(){
 		if(father == null){
-		return true;
+			return true;
 		}else{
 			return false;
 		}
@@ -70,10 +71,12 @@ public class EntitySpiritWolf extends EntityCreature {
 	{
 		worldObj.spawnParticle("largesmoke", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
 		if((father != null) && (center)){
-			this.setJumping(false);
 			father.update();
+		}else{
+			if(father == null){
+				super.onLivingUpdate();
+			}
 		}
-		super.onLivingUpdate();
 	}
 	
 	@Override
