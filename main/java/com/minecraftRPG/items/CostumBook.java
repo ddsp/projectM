@@ -1,6 +1,7 @@
 package com.minecraftRPG.items;
 
 import com.minecraftRPG.GUI.GuiFirstBook;
+import com.minecraftRPG.GUI.ritualsGUI;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,7 @@ public class CostumBook  extends Item
    {
 	   if (player.worldObj.isRemote)
 	   {
-		   Minecraft.getMinecraft().displayGuiScreen(new GuiFirstBook());
+		   Minecraft.getMinecraft().displayGuiScreen(new ritualsGUI());
 	   }
 	   
 	   return par1ItemStack;
