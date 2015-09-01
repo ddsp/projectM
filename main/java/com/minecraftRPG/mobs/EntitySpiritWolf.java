@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class EntitySpiritWolf extends EntityCreature {
 
 	public MultiMobTest father;
-	boolean center;
+	protected boolean center;
 	
 	public EntitySpiritWolf(World par1World) {
 		super(par1World);
@@ -35,7 +35,6 @@ public class EntitySpiritWolf extends EntityCreature {
 		this.setSize(1F, 1F);
 		father = t;
 		center = centerr;
-		this.setJumping(false);
 		this.tasks.addTask(0, new EntityAIWander(this, 0.0D));
 	}
 	
@@ -57,6 +56,15 @@ public class EntitySpiritWolf extends EntityCreature {
 			super.fall(p_70069_1_);
 		}
     }
+
+	@Override
+	protected void updateFallState(double par1, boolean par3) 
+	{
+		System.out.println("true");
+		if(father == null){
+			super.updateFallState(par1, par3);
+		}
+	}
 	
 	@Override
 	public boolean isAIEnabled(){
@@ -67,15 +75,22 @@ public class EntitySpiritWolf extends EntityCreature {
 		}
 	}
 	
+	@Override
 	public void onLivingUpdate()
 	{
 		worldObj.spawnParticle("largesmoke", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
 		if((father != null) && (center)){
 			father.update();
+		}
+		super.onLivingUpdate();
+	}
+	
+	@Override
+	public void moveEntityWithHeading(float par1, float par2) {
+		if(father == null){
+			super.moveEntityWithHeading(par1, par2);
 		}else{
-			if(father == null){
-				super.onLivingUpdate();
-			}
+			this.motionY = 0;
 		}
 	}
 	
