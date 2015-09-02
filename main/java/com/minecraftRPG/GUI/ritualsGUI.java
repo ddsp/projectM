@@ -9,8 +9,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
 public class ritualsGUI extends GuiScreen{
-	int guiWidth = 148;
-	int guiHeight = 80; 
+	int guiWidth = 256;
+	int guiHeight = 165; 
 	
 	@Override
 	public void drawScreen(int x, int y, float ticks){
