@@ -16,7 +16,8 @@ public class MinecraftRPGEntitys {
 	public static void registerEntity(){
 		createEntity(EntityBlackWolf.class, "BlackWolf", 0x0004FF, 0xFF00E1, true);
 		createEntity(EntitySpiritWolf.class, "SpiritWolf", 0x0004FF, 0xFF00E1, true);
-		createEntity(IvisiProj.class, "InvisiTestTr", 0x0004FF, 0xFF00E1, true);
+		createEntity(IvisiProj.class, "InvisiTestTr", 0x0004FF, 0xFF00E1, false);
+		createEntity(EntityFlyingTest.class, "FlyingTest", 0x0004FF, 0xFF00E1, false);
 	}
 
 	public static void createEntity(Class entityClass, String entityName, int solidColor, int spotColor, boolean spawns){

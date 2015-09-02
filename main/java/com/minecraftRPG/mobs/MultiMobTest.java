@@ -6,31 +6,32 @@ import net.minecraft.world.World;
 public class MultiMobTest{
 
 	protected World world;
-	public EntitySpiritWolf[] parts; 
+	public EntityFlyingTest[] parts; 
 	public int posX;
 	public int posY;
 	public int posZ;
-	public EntitySpiritWolf center;
-	public EntitySpiritWolf wolf2;
+	public EntityFlyingTest center;
+	public EntityFlyingTest wolf2;
 	
 	public MultiMobTest(World world, int x, int y, int z) {
 		posX = x;
 		posY = y;
 		posZ = z;
-		parts = new EntitySpiritWolf[]{center = new EntitySpiritWolf(world, this, true), wolf2 = new EntitySpiritWolf(world, this, false)};
+		//parts = new EntityFlyingTest[]{center = new EntityFlyingTest(world, this, true), wolf2 = new EntityFlyingTest(world, this, false)};
 		int s = 1;
-		for(EntitySpiritWolf part: parts){
+		for(EntityFlyingTest part: parts){
 			part.setPosition(posX + s, posY, posZ);
 			world.spawnEntityInWorld(part);
+			part.motionY = 0;
 			s++;
 		}
 	}
 	
 	public void update(){
 		int s = 1;
-		for(EntitySpiritWolf part: parts){
-			part.setPositionAndUpdate(posX + s, posY + 10, posZ);
-			part.motionY = 0;
+		for(EntityFlyingTest part: parts){
+			part.moveEntity(this.posX + s, this.posY + 3, this.posZ);
+			//part.motionY = 0;
 			s++;
 		}
 	}

@@ -19,24 +19,12 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntitySpiritWolf extends EntityCreature {
-
-	public MultiMobTest father;
-	boolean center;
 	
 	public EntitySpiritWolf(World par1World) {
 		super(par1World);
 		this.setSize(1F, 1F);
 		this.tasks.addTask(0, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, 1.0D, true));
-	}
-	
-	public EntitySpiritWolf(World par1World, MultiMobTest t, boolean centerr) {
-		super(par1World);
-		this.setSize(1F, 1F);
-		father = t;
-		center = centerr;
-		this.setJumping(false);
-		this.tasks.addTask(0, new EntityAIWander(this, 0.0D));
 	}
 	
 	public EntitySpiritWolf(World par1World, EntityLiving entityEnemy) {
@@ -51,33 +39,17 @@ public class EntitySpiritWolf extends EntityCreature {
 	}
 	
 	@Override
-	protected void fall(float p_70069_1_)
-    {
-		if(father == null){
-			super.fall(p_70069_1_);
-		}
-    }
+	public boolean isAIEnabled(){
+		return true;
+	}
 	
 	@Override
-	public boolean isAIEnabled(){
-		if(father == null){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
 	public void onLivingUpdate()
 	{
+		super.onLivingUpdate();
 		worldObj.spawnParticle("largesmoke", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
-		if((father != null) && (center)){
-			father.update();
-		}else{
-			if(father == null){
-				super.onLivingUpdate();
-			}
-		}
 	}
+	
 	
 	@Override
 	protected void applyEntityAttributes(){
