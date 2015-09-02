@@ -6,9 +6,13 @@ import java.util.Map;
 
 import com.minecraftRPG.armor.MinecraftRPGArmor;
 import com.minecraftRPG.mobs.EntityBlackWolf;
+import com.minecraftRPG.mobs.EntityFlyingTest;
+import com.minecraftRPG.mobs.EntityFlyingTestC;
 import com.minecraftRPG.mobs.EntitySpiritWolf;
 import com.minecraftRPG.mobs.RenderBlackWolf;
 import com.minecraftRPG.mobs.RenderSpiritWolf;
+import com.minecraftRPG.mobs.RenderTestFlyingEntity;
+import com.minecraftRPG.mobs.RenderTestFlyingEntityC;
 import com.minecraftRPG.models.BlackWolf;
 import com.minecraftRPG.models.ModelBlackPendragonArmorV5_2;
 import com.minecraftRPG.tileEntity.AlterPedestalRenderer;
@@ -30,6 +34,8 @@ public class ClientProxy extends ServerProxy{
 				
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackWolf.class, new RenderBlackWolf(new BlackWolf(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritWolf.class, new RenderSpiritWolf(new BlackWolf(), 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFlyingTest.class, new RenderTestFlyingEntity(new BlackWolf(), 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFlyingTestC.class, new RenderTestFlyingEntityC(new BlackWolf(), 0));
 		ClientRegistry.bindTileEntitySpecialRenderer(AlterPedestalTileEntity.class, new AlterPedestalRenderer());
 	}
 	
