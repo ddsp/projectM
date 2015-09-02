@@ -29,7 +29,8 @@ public class StrucFab extends Item{
 	{
 		if (!world.isRemote)
 		{
-			EntityFlyingTestC wolf = new EntityFlyingTestC(world,x, y+1, z);
+			EntityFlyingTestC wolf = new EntityFlyingTestC(world);
+			wolf.setPosition(x, y + 1, z);
 			world.spawnEntityInWorld(wolf);
 		}
         return false;

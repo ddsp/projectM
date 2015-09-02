@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class MinecraftRPGFirstArmor extends ItemArmor{ 
 	
@@ -87,6 +88,10 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 		return armorModel;
 	}
 	
+	public void chargeArmor(ItemStack item, World world, EntityPlayer player)
+	{
+		
+	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer){	

@@ -7,17 +7,13 @@ import net.minecraft.world.World;
 public class EntityFlyingTestC extends EntityLiving{
 
 	public EntityFlyingTest secondPart;
-	public final int FPosX;
-	public final int FPosY;
-	public final int FPosZ;
 	
-	public EntityFlyingTestC(World world, int FPoX, int FPoY, int FPoZ) {
+	public EntityFlyingTestC(World world) {
 		super(world);
 		this.setSize(1F, 1F);
-		FPosX = FPoX;
-		FPosY = FPoY;
-		FPosZ = FPoZ;
-		secondPart = new EntityFlyingTest(world, this);;
+		secondPart = new EntityFlyingTest(world, this);
+		secondPart.setPosition(this.posX, this.posY, this.posZ + 1);
+		world.spawnEntityInWorld(secondPart);
 	}
 	
 	@Override
@@ -40,7 +36,14 @@ public class EntityFlyingTestC extends EntityLiving{
 	@Override
 	public void onLivingUpdate()
 	{
-		secondPart.setPosition(FPosX, FPosY, FPosZ);
+		if(secondPart == null){
+			System.out.println("Hello");
+		}else{
+			secondPart.setPosition(this.posX + 1, this.posY, this.posZ);
+			this.posY = 71;
+			//System.out.println(secondPart.posX + "   " + secondPart.posY + "   " + secondPart.posZ + 1);
+		}
+		//super.onLivingUpdate();
 	}
 	
 	@Override

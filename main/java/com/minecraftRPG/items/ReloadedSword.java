@@ -98,6 +98,15 @@ public class ReloadedSword extends ItemSword{
 	}
 	
 	@Override
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
+    {
+		System.out.println(player.inventory.armorInventory[2].getDisplayName());
+		
+		player.setItemInUse(item, this.getMaxItemUseDuration(item));
+        return item;
+    }
+	
+	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		stack.stackTagCompound = new NBTTagCompound(); 
 		stack.stackTagCompound.setInteger("currentCharge", 5);
