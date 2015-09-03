@@ -1,7 +1,10 @@
 package com.minecraftRPG.armor;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import com.minecraftRPG.items.MinecraftRPGitems;
 import com.minecraftRPG.lib.Strings;
 import com.minecraftRPG.main.ClientProxy;
 
@@ -13,8 +16,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class MinecraftRPGFirstArmor extends ItemArmor{ 
@@ -46,6 +51,12 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 	}
 	
 	@Override
+    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		stack.stackTagCompound = new NBTTagCompound(); 
+		stack.stackTagCompound.setInteger("charge", 0);
+    }
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel (EntityLivingBase entityLiving, ItemStack itemstack, int armorSlot){
 		
@@ -54,7 +65,7 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 		if(armorModel != null){
     		armorModel.bipedHead.showModel = armorSlot == 0;
     		armorModel.bipedHeadwear.showModel = false;
-    		armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+    		armorModel.bipedBody.showModel = armorSlot == 1;
     		armorModel.bipedRightArm.showModel = armorSlot == 1;
     		armorModel.bipedLeftArm.showModel = armorSlot == 1;
     		armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
@@ -84,14 +95,44 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     				}
     			}
     		}
+    		
+    		if(armorSlot == 1){
+    			
+    			int c = 0;
+    			if(itemstack.stackTagCompound == null){
+    				itemstack.stackTagCompound = new NBTTagCompound(); 
+    				itemstack.stackTagCompound.setInteger("charge", 0);
+    			}else{
+					c = itemstack.stackTagCompound.getInteger("charge");  				
+    			}
+    			int s = 0;
+    			
+    			for(ItemStack i : player.inventory.mainInventory){
+	    			if(i != null){
+	    				if(Item.getIdFromItem(i.getItem()) == Item.getIdFromItem(MinecraftRPGitems.SilverSword)){
+	    					player.inventory.mainInventory[s] = null;
+	    					c++;
+	    				}
+	    			}
+	    			s++;
+    			}
+    			
+    			itemstack.stackTagCompound.setInteger("charge", c);
+    		}
 		}
 		return armorModel;
 	}
 	
-	public void chargeArmor(ItemStack item, World world, EntityPlayer player)
-	{
-		
-	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer p_77624_2_, List list, boolean p_77624_4_) {
+    	 if (stack.stackTagCompound == null) {
+    		 stack.stackTagCompound = new NBTTagCompound(); 
+    		 stack.stackTagCompound.setInteger("charge", 0);
+    	 }
+    	 
+    	 list.add("Cooldown: " + stack.stackTagCompound.getInteger("charge"));
+     }
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer){	

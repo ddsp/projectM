@@ -1,7 +1,6 @@
 package com.minecraftRPG.items;
 
 import java.util.List;
-import java.util.Random;
 
 import com.google.common.collect.Multimap;
 
@@ -18,6 +17,8 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
+import com.minecraftRPG.armor.MinecraftRPGFirstArmor;
 
 public class ReloadedSword extends ItemSword{
 	protected float weaponDamage;
@@ -100,7 +101,24 @@ public class ReloadedSword extends ItemSword{
 	@Override
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
     {
-		System.out.println(player.inventory.armorInventory[2].getDisplayName());
+		if(world.isRemote){
+			if(player.inventory.armorInventory[2] != null){
+				ItemStack bodyArmor = player.inventory.armorInventory[2];
+				
+				int charge = 0;
+				
+				if(bodyArmor.stackTagCompound != null){
+					System.out.println("Erro");
+				}else{
+					charge = bodyArmor.stackTagCompound.getInteger("charge");
+				}
+				
+				charge--;
+				
+				bodyArmor.stackTagCompound.setInteger("charge", charge);
+				item.stackTagCompound.setInteger("currentCharge", 5);
+			}
+		}
 		
 		player.setItemInUse(item, this.getMaxItemUseDuration(item));
         return item;
@@ -109,7 +127,7 @@ public class ReloadedSword extends ItemSword{
 	@Override
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		stack.stackTagCompound = new NBTTagCompound(); 
-		stack.stackTagCompound.setInteger("currentCharge", 5);
+		stack.stackTagCompound.setInteger("currentCharge", 0);
 		stack.stackTagCompound.setInteger("time", 100);
 		stack.stackTagCompound.setBoolean("using", false);
     }
@@ -141,7 +159,7 @@ public class ReloadedSword extends ItemSword{
              }
     	 }else{
     		 stack.stackTagCompound = new NBTTagCompound(); 
-    		 stack.stackTagCompound.setInteger("currentCharge", 5);
+    		 stack.stackTagCompound.setInteger("currentCharge", 0);
     		 stack.stackTagCompound.setInteger("time", 100);
     		 stack.stackTagCompound.setBoolean("using", false);
     	 }
