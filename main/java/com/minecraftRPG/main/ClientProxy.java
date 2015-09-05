@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.minecraftRPG.armor.MinecraftRPGArmor;
+import com.minecraftRPG.items.MinecraftRPGitems; 
 import com.minecraftRPG.mobs.EntityBlackWolf;
 import com.minecraftRPG.mobs.EntityFlyingTest;
 import com.minecraftRPG.mobs.EntityFlyingTestC;
@@ -23,6 +24,8 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraft.item.Item;
 
 public class ClientProxy extends ServerProxy{
@@ -47,6 +50,7 @@ public class ClientProxy extends ServerProxy{
 		armorModels.put(MinecraftRPGArmor.first_body, custom_armor);
 		armorModels.put(MinecraftRPGArmor.first_legs, custom_legs);
 		armorModels.put(MinecraftRPGArmor.first_boots, custom_armor);
+		
 
 	}	
 }

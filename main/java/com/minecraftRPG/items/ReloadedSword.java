@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +22,7 @@ import net.minecraft.world.World;
 import com.minecraftRPG.armor.MinecraftRPGFirstArmor;
 
 public class ReloadedSword extends ItemSword{
+	
 	protected float weaponDamage;
 	IIcon reloadedSword;
 	IIcon unreloadedSword;
@@ -99,29 +101,57 @@ public class ReloadedSword extends ItemSword{
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
+    public EnumAction getItemUseAction(ItemStack p_77661_1_)
     {
-		if(world.isRemote){
+        return EnumAction.bow;
+    }
+    
+	
+    public int getMaxItemUseDuration(ItemStack p_77626_1_)
+    {
+        return 240;
+    }
+	
+	@Override
+	public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
+    {
+		System.out.println(count);
+    }
+    
+	@Override
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
+    {	
+		if(!world.isRemote){
+			player.setItemInUse(item, this.getMaxItemUseDuration(item));
 			if(player.inventory.armorInventory[2] != null){
 				ItemStack bodyArmor = player.inventory.armorInventory[2];
 				
 				int charge = 0;
+				int charge2 = item.stackTagCompound.getInteger("currentCharge");
 				
-				if(bodyArmor.stackTagCompound != null){
+				if(bodyArmor.stackTagCompound == null){
 					System.out.println("Erro");
 				}else{
 					charge = bodyArmor.stackTagCompound.getInteger("charge");
 				}
 				
-				charge--;
-				
-				bodyArmor.stackTagCompound.setInteger("charge", charge);
-				item.stackTagCompound.setInteger("currentCharge", 5);
-			}
+				if(charge > 0){
+					charge--;					
+					charge2++;
+					
+					bodyArmor.stackTagCompound.setInteger("charge", charge);
+					item.stackTagCompound.setInteger("currentCharge", charge2);
+				}
+			}	
 		}
 		
-		player.setItemInUse(item, this.getMaxItemUseDuration(item));
         return item;
+    }
+	
+	@Override
+	public void onPlayerStoppedUsing(ItemStack item, World world, EntityPlayer player, int count)
+    {
+		System.out.println("HelloS");
     }
 	
 	@Override
@@ -130,6 +160,8 @@ public class ReloadedSword extends ItemSword{
 		stack.stackTagCompound.setInteger("currentCharge", 0);
 		stack.stackTagCompound.setInteger("time", 100);
 		stack.stackTagCompound.setBoolean("using", false);
+		stack.stackTagCompound.setInteger("timeUsing", 0);
+		stack.stackTagCompound.setBoolean("using2", false);
     }
 	
 	@Override

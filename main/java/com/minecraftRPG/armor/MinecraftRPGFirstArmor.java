@@ -131,7 +131,7 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     		 stack.stackTagCompound.setInteger("charge", 0);
     	 }
     	 
-    	 list.add("Cooldown: " + stack.stackTagCompound.getInteger("charge"));
+    	 list.add("Unsheded Swords: " + stack.stackTagCompound.getInteger("charge"));
      }
 	
 	@Override
