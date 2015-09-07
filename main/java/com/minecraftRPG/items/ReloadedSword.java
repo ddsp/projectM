@@ -99,30 +99,33 @@ public class ReloadedSword extends ItemSword{
 		}
 		return true;
 	}
-	
-	@Override
-    public EnumAction getItemUseAction(ItemStack p_77661_1_)
-    {
-        return EnumAction.bow;
-    }
     
-	
+	@Override
     public int getMaxItemUseDuration(ItemStack p_77626_1_)
     {
-        return 240;
+        return 72000;
     }
 	
 	@Override
 	public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
     {
-		System.out.println(count);
+		int n = this.getMaxItemUseDuration(stack) - count;
+		System.out.println(n);
     }
     
 	@Override
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
     {	
+		player.setItemInUse(item, this.getMaxItemUseDuration(item));		
+        return item;
+    }
+	
+	@Override
+	public void onPlayerStoppedUsing(ItemStack item, World world, EntityPlayer player, int count)
+    {
 		if(!world.isRemote){
-			player.setItemInUse(item, this.getMaxItemUseDuration(item));
+			int n = ((this.getMaxItemUseDuration(item) - count)/20)/3;
+			System.out.println(count + "   " + n + "  " + ((this.getMaxItemUseDuration(item) - count)/20));
 			if(player.inventory.armorInventory[2] != null){
 				ItemStack bodyArmor = player.inventory.armorInventory[2];
 				
@@ -135,22 +138,15 @@ public class ReloadedSword extends ItemSword{
 					charge = bodyArmor.stackTagCompound.getInteger("charge");
 				}
 				
-				if(charge > 0){
-					charge--;					
-					charge2++;
+				if((charge > 0) && (charge2 == 0)){
+					charge -= n;					
+					charge2 = n;
 					
 					bodyArmor.stackTagCompound.setInteger("charge", charge);
 					item.stackTagCompound.setInteger("currentCharge", charge2);
 				}
 			}	
 		}
-		
-        return item;
-    }
-	
-	@Override
-	public void onPlayerStoppedUsing(ItemStack item, World world, EntityPlayer player, int count)
-    {
 		System.out.println("HelloS");
     }
 	
@@ -160,8 +156,6 @@ public class ReloadedSword extends ItemSword{
 		stack.stackTagCompound.setInteger("currentCharge", 0);
 		stack.stackTagCompound.setInteger("time", 100);
 		stack.stackTagCompound.setBoolean("using", false);
-		stack.stackTagCompound.setInteger("timeUsing", 0);
-		stack.stackTagCompound.setBoolean("using2", false);
     }
 	
 	@Override

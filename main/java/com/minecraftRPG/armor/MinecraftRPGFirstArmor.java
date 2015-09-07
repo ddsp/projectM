@@ -109,7 +109,7 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     			
     			for(ItemStack i : player.inventory.mainInventory){
 	    			if(i != null){
-	    				if(Item.getIdFromItem(i.getItem()) == Item.getIdFromItem(MinecraftRPGitems.SilverSword)){
+	    				if((Item.getIdFromItem(i.getItem()) == Item.getIdFromItem(MinecraftRPGitems.SilverSword)) && (c < 4)){
 	    					player.inventory.mainInventory[s] = null;
 	    					c++;
 	    				}

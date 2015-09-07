@@ -24,6 +24,7 @@ public class MinecraftRPGitems {
 	public static Item ReloadedSword;
 	public static Item SilverSword;
 	public static Item SilverIngot;
+	public static Item QuishaTianling;
 	public static Item CostumBook;
 	
 	public static void initItems(){
@@ -31,6 +32,7 @@ public class MinecraftRPGitems {
 		strucFab = new StrucFab().setUnlocalizedName("StrucFab").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		spiritWStaff = new SpiritWolfStaff(enumToolMaterialMinecraftRPG, 3).setUnlocalizedName("SpiritWolfStaff").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		ReloadedSword = new ReloadedSword(enumToolMaterialMinecraftRPGRS, 16).setUnlocalizedName("ReloadedSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
+		QuishaTianling = new QuishaTianling(enumToolMaterialMinecraftRPGRS, 16).setUnlocalizedName("QuishaTianling").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		SilverSword = new SilverSword(enumToolMaterialMinecraftRPG, 5).setUnlocalizedName("SilverSword").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 		CostumBook = new CostumBook().setUnlocalizedName("CostumBook").setCreativeTab(MinecraftRPGBlocks.MinecraftRPGTab);
 	}
@@ -41,6 +43,7 @@ public class MinecraftRPGitems {
 		GameRegistry.registerItem(spiritWStaff, "SpiritWolfStaff");
 		GameRegistry.registerItem(ReloadedSword, "ReloadedSword");
 		GameRegistry.registerItem(SilverSword, "SilverSword");
+		GameRegistry.registerItem(QuishaTianling, "QuishaTianling");
 		GameRegistry.registerItem(CostumBook, "CostumBook");
 	}
 }
