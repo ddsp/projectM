@@ -40,6 +40,7 @@ public class SpiritWolfStaff extends ItemSword{
 		if(cooldown == 0){
 			if (!world.isRemote)
 			{					
+				
 				world.spawnEntityInWorld(new IvisiProj( world, player, this));
 				cooldown = 60;
 			}

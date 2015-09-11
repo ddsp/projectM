@@ -4,10 +4,10 @@ import com.minecraftRPG.items.SpiritWolfStaff;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.Direction;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -53,13 +53,33 @@ public class IvisiProj extends EntityThrowable
 	protected void onImpact(MovingObjectPosition par1) {
 		if (par1.entityHit instanceof EntityLivingBase)
 		{		
+			int heading = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+			
+			//String test = String.format("f: %d (%s) / %f", heading, Direction.directions[heading], MathHelper.wrapAngleTo180_float(player.rotationYaw));
 			
 			EntitySpiritWolf wolf = new EntitySpiritWolf(world, (EntityLiving)par1.entityHit);
-			wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F);
-			world.spawnEntityInWorld(wolf); 
-			
 			EntitySpiritWolf wolf2 = new EntitySpiritWolf(world, (EntityLiving)par1.entityHit);
-			wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
+			
+			switch(heading){
+				
+				case 1:
+				case 3:
+					wolf.setLocationAndAngles(player.posX, player.posY+1, player.posZ+1,world.rand.nextFloat() * 360.0F, 0.0F); 
+					wolf2.setLocationAndAngles(player.posX, player.posY+1, player.posZ-1,world.rand.nextFloat() * 360.0F, 0.0F);
+				break;
+				
+				case 0:
+				case 2:
+					wolf.setLocationAndAngles(player.posX+1, player.posY+1, player.posZ,world.rand.nextFloat() * 360.0F, 0.0F); 
+					wolf2.setLocationAndAngles(player.posX-1, player.posY+1, player.posZ,world.rand.nextFloat() * 360.0F, 0.0F);
+				break;
+				
+				default:
+					System.out.println("error");
+					break;
+			}
+			
+			world.spawnEntityInWorld(wolf);
 			world.spawnEntityInWorld(wolf2);
 			
 			wolf.setTarget(par1.entityHit);
