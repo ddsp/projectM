@@ -48,10 +48,14 @@ public class QuishaTianling extends ItemSword{
 	}
 	
 	@Override
+	public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
+    {
+		MinecraftRPG.proxy.generateMysteriousParticles(player);
+    }
+	
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
 		super.onUpdate(stack, world, player, par4, par5);
-		
-		MinecraftRPG.proxy.generateMysteriousParticles(player);
 		
 		int t = stack.stackTagCompound.getInteger("Timer");
 		String SoulSlave = stack.stackTagCompound.getString("SoulSlave");

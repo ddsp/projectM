@@ -30,6 +30,7 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -66,9 +67,7 @@ public class ClientProxy extends ServerProxy{
 	@Override
 	public void generateMysteriousParticles(Entity theEntity)
 	{
-	    double motionX = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionY = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionZ = theEntity.worldObj.rand.nextGaussian() * 0.02D;
+		World world = theEntity.worldObj;
 	    EntityFX particleMysterious = new SwordSouls(
 	          theEntity.worldObj, 
 	          theEntity.posX + theEntity.worldObj.rand.nextFloat() * theEntity.width 
@@ -76,10 +75,7 @@ public class ClientProxy extends ServerProxy{
 	          theEntity.posY + 0.5D + theEntity.worldObj.rand.nextFloat() 
 	                * theEntity.height, 
 	          theEntity.posZ + theEntity.worldObj.rand.nextFloat() * theEntity.width 
-	                * 2.0F - theEntity.width, 
-	          motionX, 
-	          motionY, 
-	          motionZ);
+	                * 2.0F - theEntity.width);
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleMysterious);        
 	}
 }

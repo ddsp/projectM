@@ -6,20 +6,22 @@ import com.minecraftRPG.lib.Strings;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.particle.EntityAuraFX;
+import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class SwordSouls  extends EntityAuraFX
+public class SwordSouls  extends EntityFX
 {
 	
 	private static final ResourceLocation texture = new ResourceLocation(Strings.IMGMODID, "textures/items/SilverIngot.png");
 	
-    public SwordSouls(World parWorld,
-            double parX, double parY, double parZ,
-            double parMotionX, double parMotionY, double parMotionZ) 
+    public SwordSouls(World parWorld, double parX, double parY, double parZ) 
     {
-        super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
+        super(parWorld, parX, parY, parZ);
+        setGravity(0);
+        setMaxAge(50);
+        
     }
     
     @Override
@@ -45,5 +47,23 @@ public class SwordSouls  extends EntityAuraFX
         GL11.glAlphaFunc(GL11.GL_GREATER, 0.1f);
 	}
     
+    @Override
+    public int getFXLayer(){
+    	return 3;
+    }
     
+    public SwordSouls setMaxAge(int maxAge){
+    	particleMaxAge = maxAge;
+    	return this;
+    }
+    
+    public SwordSouls setGravity(int gravity){
+    	particleGravity = gravity;
+    	return this;
+    }
+    
+    public SwordSouls setScale(int scale){
+    	particleScale = scale;
+    	return this;
+    }    
 }
