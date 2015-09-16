@@ -5,10 +5,12 @@ import com.minecraftRPG.items.MinecraftRPGitems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class AttackingEvent {
 	
@@ -81,6 +83,23 @@ public class AttackingEvent {
 				
 				//Check healing factor
 				//System.out.println((event.entityLiving.getMaxHealth()-event.entityLiving.getHealth())/5);
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void LivingHurtEvent (LivingHurtEvent event) {
+		
+		if(event.entity instanceof EntityPlayer ){
+			EntityPlayer player = (EntityPlayer) event.entity;
+			Boolean veri = false;
+			for(ItemStack piece : player.inventory.armorInventory){
+				if(piece == null){
+					veri = true;
+				}
+			}
+			if(!veri){
+				player.heal(event.ammount/2);
 			}
 		}
 	}

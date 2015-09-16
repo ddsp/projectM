@@ -30,6 +30,8 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
@@ -67,15 +69,13 @@ public class ClientProxy extends ServerProxy{
 	@Override
 	public void generateMysteriousParticles(Entity theEntity)
 	{
+		Vec3 vec3 = theEntity.getLookVec();
 		World world = theEntity.worldObj;
 	    EntityFX particleMysterious = new SwordSouls(
 	          theEntity.worldObj, 
-	          theEntity.posX + theEntity.worldObj.rand.nextFloat() * theEntity.width 
-	                * 2.0F - theEntity.width, 
-	          theEntity.posY + 0.5D + theEntity.worldObj.rand.nextFloat() 
-	                * theEntity.height, 
-	          theEntity.posZ + theEntity.worldObj.rand.nextFloat() * theEntity.width 
-	                * 2.0F - theEntity.width);
-	    Minecraft.getMinecraft().effectRenderer.addEffect(particleMysterious);        
+	          theEntity.posX + vec3.xCoord, 
+	          theEntity.posY + vec3.yCoord, 
+	          theEntity.posZ + vec3.zCoord);
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleMysterious); 
 	}
 }

@@ -1,5 +1,7 @@
 package com.minecraftRPG.items;
 
+import com.minecraftRPG.GUI.GUILimiter_Def;
+import com.minecraftRPG.GUI.ritualsGUI;
 import com.minecraftRPG.mobs.EntityBlackWolf;
 import com.minecraftRPG.mobs.EntityFlyingTestC;
 import com.minecraftRPG.mobs.MultiMobTest;
@@ -8,6 +10,7 @@ import com.minecraftRPG.structures.test;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -27,12 +30,7 @@ public class StrucFab extends Item{
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		if (!world.isRemote)
-		{
-			EntityFlyingTestC wolf = new EntityFlyingTestC(world);
-			wolf.setPosition(x, y + 1, z);
-			world.spawnEntityInWorld(wolf);
-		}
+		Minecraft.getMinecraft().displayGuiScreen(new ritualsGUI());
         return false;
     }
 	

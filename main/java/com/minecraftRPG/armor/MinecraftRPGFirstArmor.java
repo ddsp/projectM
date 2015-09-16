@@ -120,6 +120,16 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     			itemstack.stackTagCompound.setInteger("charge", c);
     		}
 		}
+		
+		if(entityLiving instanceof EntityPlayer ){
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			Boolean veri = false;
+			for(ItemStack piece : player.inventory.armorInventory){
+				if(piece == null){
+					veri = true;
+				}
+			}	
+		}
 		return armorModel;
 	}
 	
@@ -131,7 +141,11 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     		 stack.stackTagCompound.setInteger("charge", 0);
     	 }
     	 
-    	 list.add("Unsheded Swords: " + stack.stackTagCompound.getInteger("charge"));
+    	 System.out.println(stack.getDisplayName());
+    	 
+    	 if(stack.getItem().equals(MinecraftRPGArmor.first_body)){
+    		 list.add("Unsheded Swords: " + stack.stackTagCompound.getInteger("charge"));
+    	 }
      }
 	
 	@Override

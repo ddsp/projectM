@@ -80,19 +80,24 @@ public class ReloadedSword extends ItemSword{
 		World worldRef = ((EntityPlayer) attacker).worldObj;
 		if(reloaduses > 0){
 			if(!stack.stackTagCompound.getBoolean("using")){
+				int TillLimit = stack.getTagCompound().getInteger("OverTheLimit") - 1;
+				stack.stackTagCompound.setInteger("OverTheLimit", TillLimit);
+				System.out.println(TillLimit);
 				reloaduses = reloaduses - 1;
 				if(reloaduses > 0){
-				stack.stackTagCompound.setBoolean("using", true);
+					stack.stackTagCompound.setBoolean("using", true);
 				}
 			}
 			stack.stackTagCompound.setInteger("currentCharge", reloaduses);
 			if (!worldRef.isRemote)
 			{
-				if (reloaduses == 0)
+				int TillLimit = stack.getTagCompound().getInteger("OverTheLimit");
+				if (TillLimit == 0)
 				{
 					if(target != null)
 					{
 						worldRef.createExplosion(null , target.posX, target.posY+1, target.posZ, 0.9F, false);
+						stack.stackTagCompound.setInteger("OverTheLimit", 5);
 					}
 				}
 			}
@@ -156,6 +161,7 @@ public class ReloadedSword extends ItemSword{
 		stack.stackTagCompound.setInteger("currentCharge", 0);
 		stack.stackTagCompound.setInteger("time", 100);
 		stack.stackTagCompound.setBoolean("using", false);
+		stack.stackTagCompound.setInteger("OverTheLimit", 5);
     }
 	
 	@Override
@@ -179,6 +185,8 @@ public class ReloadedSword extends ItemSword{
     	 if (stack.stackTagCompound != null) {
     		 int reloaduses = stack.stackTagCompound.getInteger("currentCharge");
              list.add("Current Charge: " + reloaduses);
+             int explosion = stack.stackTagCompound.getInteger("OverTheLimit");
+             list.add("EXPLOSION CHARGE: " + (5 - explosion));
              if(stack.stackTagCompound.getBoolean("using")){
             	 int time = stack.stackTagCompound.getInteger("time")/20;
             	 list.add("Cooldown: " + time);
@@ -188,6 +196,7 @@ public class ReloadedSword extends ItemSword{
     		 stack.stackTagCompound.setInteger("currentCharge", 0);
     		 stack.stackTagCompound.setInteger("time", 100);
     		 stack.stackTagCompound.setBoolean("using", false);
+    		 stack.stackTagCompound.setInteger("OverTheLimit", 5);
     	 }
      }
 }
