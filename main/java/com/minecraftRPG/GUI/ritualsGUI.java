@@ -11,16 +11,18 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
 public class ritualsGUI extends GuiScreen{
-	int guiWidth = 90;
-	int guiHeight = 15; 
+	int guiWidth = 86;
+	int guiHeight = 14; 
 	
 	@Override
 	public void drawScreen(int x, int y, float ticks){
-		int guiX = 50;
-		int guiY = 50;
-		GL11.glColor4f(1, 1, 1, 1);
-		mc.renderEngine.bindTexture(new ResourceLocation(Strings.IMGMODID+":textures/gui/Limiter_FullArmorGUI(5).png"));
-		drawTexturedModalRect(guiX, guiY, 0, 0, guiWidth, guiHeight);
+		int guiX = 0;
+		int guiY = 0;
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+	    GL11.glDisable(GL11.GL_LIGHTING); 
+		ResourceLocation r = new ResourceLocation(Strings.IMGMODID+":textures/gui/Limiter_FullArmorGUI(5).png");
+		mc.renderEngine.bindTexture(new ResourceLocation(Strings.IMGMODID+":textures/gui/Limiter_FullArmorGUI.png"));
+		drawTexturedModalRect(guiX, guiY, 1, 1, guiWidth, guiHeight);
 		
 		super.drawScreen(x, y, ticks);
 	}

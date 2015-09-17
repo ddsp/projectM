@@ -125,11 +125,17 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			Boolean veri = false;
 			for(ItemStack piece : player.inventory.armorInventory){
-				if(piece == null){
+				if(piece == null || !(
+						piece.getItem().equals(MinecraftRPGArmor.first_helm) ||
+						piece.getItem().equals(MinecraftRPGArmor.first_body) ||
+						piece.getItem().equals(MinecraftRPGArmor.first_legs) ||
+						piece.getItem().equals(MinecraftRPGArmor.first_boots))){
 					veri = true;
 				}
-			}	
+			}
+			//System.out.println(veri);
 		}
+		
 		return armorModel;
 	}
 	

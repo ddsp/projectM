@@ -1,5 +1,6 @@
 package com.minecraftRPG.main;
 
+import com.minecraftRPG.GUI.GUILimiter_Def;
 import com.minecraftRPG.armor.MinecraftRPGArmor;
 import com.minecraftRPG.blocks.MinecraftRPGBlocks;
 import com.minecraftRPG.items.MinecraftRPGitems;
@@ -17,6 +18,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = Strings.MODID, name = Strings.NAME, version = Strings.VERSION)
 public class MinecraftRPG
@@ -59,5 +62,7 @@ public class MinecraftRPG
     }
  
     @Mod.EventHandler
-    public void PostLoad(FMLPostInitializationEvent PostEvent) {}
+    public void PostLoad(FMLPostInitializationEvent PostEvent) {
+    	MinecraftForge.EVENT_BUS.register(new GUILimiter_Def(Minecraft.getMinecraft()));
+    }
 }
