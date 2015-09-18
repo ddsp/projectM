@@ -15,29 +15,29 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class MinecraftRPGArmor {
 
-	public static ArmorMaterial enumArmorMaterialMinecraftRPG = EnumHelper.addArmorMaterial("MinecraftRPGArmor", 0, new int[]{0, 0, 0, 0}, 0);
+	public static ArmorMaterial enumArmorMaterialMinecraftRPG = EnumHelper.addArmorMaterial("MinecraftRPGArmor", 69, new int[]{3, 8, 6, 3}, 6);
 	
 	public static void mainRegistry(){
     	initArmor();
     	registerArmor();
     }
     
-    public static Item first_helm;
-    public static Item first_body;
-    public static Item first_legs;
-    public static Item first_boots;
+    public static Item PendragonHelmet;
+    public static Item PendragonChestplate;
+    public static Item PendragonLeggins;
+    public static Item PendragonBoots;
     
     public static void initArmor(){
-    	first_helm = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 0).setUnlocalizedName("first_helm");
-    	first_body = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 1).setUnlocalizedName("first_body");
-    	first_legs = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 2).setUnlocalizedName("first_legs");
-    	first_boots = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 3).setUnlocalizedName("first_boots");
+    	PendragonHelmet = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 0).setUnlocalizedName("Pendragon_Helmet");
+    	PendragonChestplate = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 1).setUnlocalizedName("Pendragon_Chestplate");
+    	PendragonLeggins = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 2).setUnlocalizedName("Pendragon_Leggins");
+    	PendragonBoots = new MinecraftRPGFirstArmor(enumArmorMaterialMinecraftRPG, 1, 3).setUnlocalizedName("Pendragon_Boots");
     }
     
     public static void registerArmor(){    	
-    	  GameRegistry.registerItem(first_helm, "first_helm");
-    	  GameRegistry.registerItem(first_body, "first_body");
-    	  GameRegistry.registerItem(first_legs, "first_legs");
-    	  GameRegistry.registerItem(first_boots, "first_boots");
+    	  GameRegistry.registerItem(PendragonHelmet, "Pendragon_Helmet");
+    	  GameRegistry.registerItem(PendragonChestplate, "Pendragon_Chestplate");
+    	  GameRegistry.registerItem(PendragonLeggins, "Pendragon_Leggins");
+    	  GameRegistry.registerItem(PendragonBoots, "Pendragon_Boots");
     }
 }

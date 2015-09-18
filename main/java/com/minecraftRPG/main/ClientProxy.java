@@ -56,10 +56,10 @@ public class ClientProxy extends ServerProxy{
 		ModelBlackPendragonArmorV5_2 custom_armor = new ModelBlackPendragonArmorV5_2(1F);
 		ModelBlackPendragonArmorV5_2 custom_legs = new ModelBlackPendragonArmorV5_2(0.5F);
 		
-		armorModels.put(MinecraftRPGArmor.first_helm, custom_armor);
-		armorModels.put(MinecraftRPGArmor.first_body, custom_armor);
-		armorModels.put(MinecraftRPGArmor.first_legs, custom_legs);
-		armorModels.put(MinecraftRPGArmor.first_boots, custom_armor);
+		armorModels.put(MinecraftRPGArmor.PendragonHelmet, custom_armor);
+		armorModels.put(MinecraftRPGArmor.PendragonChestplate, custom_armor);
+		armorModels.put(MinecraftRPGArmor.PendragonLeggins, custom_legs);
+		armorModels.put(MinecraftRPGArmor.PendragonBoots, custom_armor);
 	}	
 	
 	public void registerItemRenderers(){

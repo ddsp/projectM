@@ -4,10 +4,10 @@ item.ReloadedSword.name=Reloaded Sword
 item.SilverSword.name=Silver Sword
 item.SilverIngot.name=Silver Ingot
 item.SilverSword.name=Silver Sword
-item.minecraftrpg:first_helm.name=First Helmet
-item.minecraftrpg:first_body.name=First Body
-item.minecraftrpg:first_legs.name=First Legs
-item.minecraftrpg:first_boots.name=First Boots
+item.minecraftrpg:Pendragon_Helmet.name=Pendragon Helmet
+item.minecraftrpg:Pendragon_Chestplate.name=Pendragon Chestplate
+item.minecraftrpg:Pendragon_Leggins.name=Pendragon Leggins
+item.minecraftrpg:Pendragon_Boots.name=Pendragon Boots
 
 entity.BlackWolf.name=Black Wolf
 

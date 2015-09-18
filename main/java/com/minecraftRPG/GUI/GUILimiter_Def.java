@@ -39,10 +39,10 @@ public class GUILimiter_Def extends Gui {
 		Boolean veri = true;
 		for(ItemStack piece : player.inventory.armorInventory){
 			if(piece == null || !(
-					piece.getItem().equals(MinecraftRPGArmor.first_helm) ||
-					piece.getItem().equals(MinecraftRPGArmor.first_body) ||
-					piece.getItem().equals(MinecraftRPGArmor.first_legs) ||
-					piece.getItem().equals(MinecraftRPGArmor.first_boots))){
+					piece.getItem().equals(MinecraftRPGArmor.PendragonHelmet) ||
+					piece.getItem().equals(MinecraftRPGArmor.PendragonChestplate) ||
+					piece.getItem().equals(MinecraftRPGArmor.PendragonLeggins) ||
+					piece.getItem().equals(MinecraftRPGArmor.PendragonBoots))){
 				veri = false;
 			}
 		}
@@ -59,7 +59,7 @@ public class GUILimiter_Def extends Gui {
 		    GL11.glDisable(GL11.GL_LIGHTING); 
 			mc.renderEngine.bindTexture(new ResourceLocation(Strings.IMGMODID+":textures/gui/Limiter_FullArmorGUI.png"));
 			
-			drawTexturedModalRect(guiX, guiY, 1, 1+guiHeight*0, guiWidth, guiHeight);
+			drawTexturedModalRect(guiX, guiY, 1, 1+guiHeight*4, guiWidth, guiHeight);
 		}
 	}
 }

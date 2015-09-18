@@ -126,10 +126,10 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
 			Boolean veri = false;
 			for(ItemStack piece : player.inventory.armorInventory){
 				if(piece == null || !(
-						piece.getItem().equals(MinecraftRPGArmor.first_helm) ||
-						piece.getItem().equals(MinecraftRPGArmor.first_body) ||
-						piece.getItem().equals(MinecraftRPGArmor.first_legs) ||
-						piece.getItem().equals(MinecraftRPGArmor.first_boots))){
+						piece.getItem().equals(MinecraftRPGArmor.PendragonHelmet) ||
+						piece.getItem().equals(MinecraftRPGArmor.PendragonChestplate) ||
+						piece.getItem().equals(MinecraftRPGArmor.PendragonLeggins) ||
+						piece.getItem().equals(MinecraftRPGArmor.PendragonBoots))){
 					veri = true;
 				}
 			}
@@ -149,7 +149,7 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     	 
     	 System.out.println(stack.getDisplayName());
     	 
-    	 if(stack.getItem().equals(MinecraftRPGArmor.first_body)){
+    	 if(stack.getItem().equals(MinecraftRPGArmor.PendragonChestplate)){
     		 list.add("Unsheded Swords: " + stack.stackTagCompound.getInteger("charge"));
     	 }
      }
