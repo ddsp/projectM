@@ -53,7 +53,7 @@ public class swordQinshaRender implements IItemRenderer{
 	            
 	            GL11.glPushMatrix();
 	            
-	            Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Strings.IMGMODID + ":things.png"));
+	            //Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Strings.IMGMODID + ":things.png"));
 	            
 	            GL11.glRotatef(0.0F,  0.0F, 0.0F, 1.0F);
 	            GL11.glRotatef(180.0F,  1.0F, 0.0F, 0.0F);

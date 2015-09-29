@@ -63,7 +63,7 @@ public class ClientProxy extends ServerProxy{
 	}	
 	
 	public void registerItemRenderers(){
-	      MinecraftForgeClient.registerItemRenderer(MinecraftRPGitems.QuishaTianling, (IItemRenderer)new swordQinshaRender());
+	      //MinecraftForgeClient.registerItemRenderer(MinecraftRPGitems.QuishaTianling, (IItemRenderer)new swordQinshaRender());
 	}
 	
 	@Override

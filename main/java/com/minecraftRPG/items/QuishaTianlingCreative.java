@@ -31,12 +31,12 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import com.minecraftRPG.armor.MinecraftRPGFirstArmor;
 import com.minecraftRPG.main.MinecraftRPG;
 
-public class QuishaTianling extends ItemSword{
+public class QuishaTianlingCreative extends ItemSword{
 	
 	protected float weaponDamage;
 	int lastn = 0;
 	
-	public QuishaTianling(ToolMaterial mat, float damage) {
+	public QuishaTianlingCreative(ToolMaterial mat, float damage) {
 		super(mat);
 		weaponDamage = damage; 
 	}
@@ -44,8 +44,7 @@ public class QuishaTianling extends ItemSword{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg){
-		reg.registerIcon("minecraftrpg:ActiveReloadSword");
-		System.out.println("FUCK");
+		reg.registerIcon("minecraftrpg:QuinshaTianlingIcon");
 	}
 	
 	@Override
@@ -206,13 +205,13 @@ public class QuishaTianling extends ItemSword{
     	 }else{
     		 stack.stackTagCompound = new NBTTagCompound(); 
     		 stack.stackTagCompound.setString("SoulSlave", "");
-    		 stack.stackTagCompound.setInteger("healingDivider", 5);
-    		 stack.stackTagCompound.setInteger("DamageBoost", 0);
-    		 stack.stackTagCompound.setInteger("DamageBoostLVL", 0);
-    		 stack.stackTagCompound.setBoolean("DamageBoostActive", false);
-    		 stack.stackTagCompound.setInteger("Souls", 0);
-    		 stack.stackTagCompound.setInteger("SoulEaterLVL", 0);
-    		 stack.stackTagCompound.setBoolean("SoulEaterActive", false);
+    		 stack.stackTagCompound.setInteger("healingDivider", 8);
+    		 stack.stackTagCompound.setInteger("DamageBoost", 4);
+    		 stack.stackTagCompound.setInteger("DamageBoostLVL", 3);
+    		 stack.stackTagCompound.setBoolean("DamageBoostActive", true);
+    		 stack.stackTagCompound.setInteger("Souls", 500);
+    		 stack.stackTagCompound.setInteger("SoulEaterLVL", 3);
+    		 stack.stackTagCompound.setBoolean("SoulEaterActive", true);
     		 stack.stackTagCompound.setInteger("Timer", 0);
     		 stack.stackTagCompound.setInteger("ReverseSoul", 0);
     	 }

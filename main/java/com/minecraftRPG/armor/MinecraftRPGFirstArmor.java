@@ -147,8 +147,6 @@ public class MinecraftRPGFirstArmor extends ItemArmor{
     		 stack.stackTagCompound.setInteger("charge", 0);
     	 }
     	 
-    	 System.out.println(stack.getDisplayName());
-    	 
     	 if(stack.getItem().equals(MinecraftRPGArmor.PendragonChestplate)){
     		 list.add("Unsheded Swords: " + stack.stackTagCompound.getInteger("charge"));
     	 }

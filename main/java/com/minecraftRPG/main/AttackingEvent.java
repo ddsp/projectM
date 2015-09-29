@@ -3,12 +3,14 @@ package com.minecraftRPG.main;
 import com.minecraftRPG.items.MinecraftRPGitems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
@@ -34,15 +36,27 @@ public class AttackingEvent {
 				int ReverseSoul = playerStack.getInteger("ReverseSoul");
 				String CurrentSS = playerStack.getString("SoulSlave");
 				
+				if(event.entityLiving instanceof EntityWither)
+				{
+					sourcePlayer.addChatMessage(new ChatComponentText("THIS POWER.... I CANT CONTROLE SO MUCH POWER FLOWING TO ME!!!"));
+				}
+				
 				if((CurrentSS == sourcePlayer.getDisplayName()) || (CurrentSS == ""))
 				{
 					
 					if(playerStack.getBoolean("SoulEaterActive") == true)
 					{
-						sourcePlayer.heal((event.entityLiving.getMaxHealth()-event.entityLiving.getHealth())/5);
+						int heal = (int) (sourcePlayer.getMaxHealth() * (CurrentHD / 100));
+						
+						heal = Math.round(heal);
+						
+						sourcePlayer.heal(heal);
 					}				
-							
-					playerStack.setInteger("Souls", CurrentSouls + 1);
+					
+					if(playerStack.getInteger("Souls") != 500)
+					{
+						playerStack.setInteger("Souls", CurrentSouls + 1);
+					}
 					
 					if(playerStack.getInteger("Souls") == 10)
 					{
@@ -52,12 +66,55 @@ public class AttackingEvent {
 						sourcePlayer.addChatMessage(new ChatComponentText(MessageSoulEaterActivate));
 					}
 					
-					if(sourcePlayer.inventory.getCurrentItem().getTagCompound().getInteger("Souls") == 25)
+					if(playerStack.getInteger("Souls") == 25)
 					{
 						playerStack.setBoolean("DamageBoostActive", true);
 						playerStack.setInteger("DamageBoostLVL", 1);
 						playerStack.setInteger("DamageBoost", CurrentDB + 1);
 						sourcePlayer.addChatMessage(new ChatComponentText(MessageDamageBoostActivate));
+					}
+					
+					if(playerStack.getInteger("Souls") == 50)
+					{
+						playerStack.setInteger("DamageBoostLVL", 2);
+						
+						int boost = CurrentDB + (int)(CurrentDB * (5.f / 100.0f));
+						
+						boost = Math.round(boost);
+						
+						playerStack.setInteger("DamageBoost", CurrentDB + boost);
+						
+					}
+					
+					if(playerStack.getInteger("Souls") == 100)
+					{
+						playerStack.setInteger("SoulEaterLVL", 2);
+						
+						playerStack.setInteger("healingDivider", CurrentHD + 1);
+					}
+					
+					if(playerStack.getInteger("Souls") == 250)
+					{
+						playerStack.setInteger("SoulEaterLVL", 3);
+						playerStack.setInteger("DamageBoostLVL", 3);
+						
+						playerStack.setInteger("healingDivider", CurrentHD + 2);
+						
+						int boost = CurrentDB + (int)(CurrentDB * (10.f / 100.0f));
+						boost = Math.round(boost);
+						playerStack.setInteger("DamageBoost", CurrentDB + boost);
+					}
+					
+					if(playerStack.getInteger("Souls") == 500)
+					{
+						playerStack.setInteger("SoulEaterLVL", 3);
+						playerStack.setInteger("DamageBoostLVL", 3);
+						
+						playerStack.setInteger("healingDivider", CurrentHD + 2);
+						
+						int boost = CurrentDB + (int)(CurrentDB * (10.f / 100.0f));
+						boost = Math.round(boost);
+						playerStack.setInteger("DamageBoost", CurrentDB + boost);
 					}
 
 				}
@@ -102,5 +159,11 @@ public class AttackingEvent {
 				player.heal(event.ammount/2);
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onEnterChunk(EntityEvent.EnteringChunk event)
+	{
+		
 	}
 }

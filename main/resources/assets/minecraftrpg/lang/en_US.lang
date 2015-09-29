@@ -9,6 +9,9 @@ item.minecraftrpg:Pendragon_Chestplate.name=Pendragon Chestplate
 item.minecraftrpg:Pendragon_Leggins.name=Pendragon Leggins
 item.minecraftrpg:Pendragon_Boots.name=Pendragon Boots
 
+item.QuishaTianling.name=Quisha Tianling
+item.QuishaTianlingCreative.name=Quisha Tianling (C)
+
 entity.BlackWolf.name=Black Wolf
 
 tile.SilverOre.name=Silver Ore
