@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 import com.minecraftRPG.armor.MinecraftRPGFirstArmor;
+import com.minecraftRPG.lib.Strings;
 import com.minecraftRPG.main.MinecraftRPG;
 
 public class QuishaTianling extends ItemSword{
@@ -44,8 +45,7 @@ public class QuishaTianling extends ItemSword{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg){
-		reg.registerIcon("minecraftrpg:ActiveReloadSword");
-		System.out.println("FUCK");
+		this.itemIcon = reg.registerIcon(Strings.IMGMODID + ":QuinshaTianlingIcon");
 	}
 	
 	@Override

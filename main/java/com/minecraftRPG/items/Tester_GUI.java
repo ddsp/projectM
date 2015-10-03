@@ -19,9 +19,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class StrucFab extends Item{
+public class Tester_GUI extends Item{
 	
-	public StrucFab(){
+	public Tester_GUI(){
 		super();
 		this.setCreativeTab(CreativeTabs.tabMisc);
 		this.setMaxStackSize(1);

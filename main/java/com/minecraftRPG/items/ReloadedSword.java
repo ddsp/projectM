@@ -115,7 +115,6 @@ public class ReloadedSword extends ItemSword{
 	public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
     {
 		int n = this.getMaxItemUseDuration(stack) - count;
-		System.out.println(n);
     }
     
 	@Override

@@ -1,14 +1,17 @@
 item.StrucFab.name=Tester
-item.SpiritWolfStaff.name=Spirit Wolf Staff
-item.ReloadedSword.name=Reloaded Sword
-item.SilverSword.name=Silver Sword
+
 item.SilverIngot.name=Silver Ingot
-item.SilverSword.name=Silver Sword
+item.Tester_Items.name=WIP Items
+
 item.minecraftrpg:Pendragon_Helmet.name=Pendragon Helmet
 item.minecraftrpg:Pendragon_Chestplate.name=Pendragon Chestplate
 item.minecraftrpg:Pendragon_Leggins.name=Pendragon Leggins
 item.minecraftrpg:Pendragon_Boots.name=Pendragon Boots
 
+item.SpiritWolfStaff.name=Spirit Wolf Staff
+item.ReloadedSword.name=Reloaded Sword
+item.SilverSword.name=Silver Sword
+item.SilverSword.name=Silver Sword
 item.QuishaTianling.name=Quisha Tianling
 item.QuishaTianlingCreative.name=Quisha Tianling (C)
 

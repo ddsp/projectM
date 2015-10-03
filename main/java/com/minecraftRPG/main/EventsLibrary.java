@@ -1,5 +1,7 @@
 package com.minecraftRPG.main;
 
+import java.util.Random;
+
 import com.minecraftRPG.items.MinecraftRPGitems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -13,9 +15,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.EntityEvent.EnteringChunk;;
 
-public class AttackingEvent {
-	
+public class EventsLibrary {
+
 	@SubscribeEvent
 	public void LivingDeathEvent(LivingDeathEvent event) {
 		DamageSource source = event.source;
