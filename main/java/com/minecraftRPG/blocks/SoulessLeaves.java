@@ -9,10 +9,13 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class SoulessLeaves extends BlockContainer {
 
+	IIcon[] iconList = new IIcon[5];
+	
 	public SoulessLeaves(Material material) {
         super(material);
     }
@@ -20,9 +23,28 @@ public class SoulessLeaves extends BlockContainer {
 	@Override
 	public void registerBlockIcons(IIconRegister reg)
     {
-        this.blockIcon = reg.registerIcon(Strings.IMGMODID+":WhiteLeaves");
+        iconList[0] = reg.registerIcon(Strings.IMGMODID+":SoulLeaves0");
+        iconList[1] = reg.registerIcon(Strings.IMGMODID+":SoulLeaves1");
+        iconList[2] = reg.registerIcon(Strings.IMGMODID+":SoulLeaves2");
+        iconList[3] = reg.registerIcon(Strings.IMGMODID+":SoulLeaves3");
+        this.blockIcon = iconList[0];
     }
 	
+	@Override
+	public boolean isOpaqueCube()
+    {
+        return false;
+    }
+	
+	@Override
+	public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+	public void setIcon(int index){
+		this.blockIcon = iconList[index];
+	}
 	
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {

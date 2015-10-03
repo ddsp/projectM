@@ -101,7 +101,7 @@ public class Tester_Items extends Item{
             		if(TE != null){
             			if(TE instanceof LeafTileEntity){
             				LeafTileEntity LTE = (LeafTileEntity) TE;
-            				System.out.println(LTE.exists());
+            				System.out.println(LTE.changeLeave());
             			}
             		}
             	}

@@ -1,11 +1,22 @@
 package com.minecraftRPG.tileEntity;
 
+import com.minecraftRPG.blocks.SoulessLeaves;
+
 import net.minecraft.tileentity.TileEntity;
 
 public class LeafTileEntity extends TileEntity{
 	
-	public boolean exists(){
-		return true;
+	private int index = 0;
+	
+	public boolean changeLeave(){
+		SoulessLeaves l = (SoulessLeaves)this.getBlockType();
+		if(index++ <= 3){
+			index++;
+			l.setIcon(index);
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }
