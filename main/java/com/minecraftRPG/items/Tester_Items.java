@@ -2,19 +2,12 @@ package com.minecraftRPG.items;
 
 import java.util.List;
 
-import com.minecraftRPG.GUI.GUILimiter_Def;
-import com.minecraftRPG.GUI.ritualsGUI;
+import com.minecraftRPG.blocks.SoulessLeaves;
 import com.minecraftRPG.lib.Strings;
-import com.minecraftRPG.mobs.EntityBlackWolf;
-import com.minecraftRPG.mobs.EntityFlyingTestC;
-import com.minecraftRPG.mobs.MultiMobTest;
-import com.minecraftRPG.models.BlackWolf;
-import com.minecraftRPG.structures.test;
-import com.minecraftRPG.tileEntity.LeafTileEntity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -22,11 +15,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
 public class Tester_Items extends Item{
 	
@@ -84,29 +74,39 @@ public class Tester_Items extends Item{
 	
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
-		int x = MathHelper.floor_double(player.posX);
-        int y = MathHelper.floor_double(player.posY);
-        int z = MathHelper.floor_double(player.posZ);
-        
-        x -= 2;
-        y += 20;
-        z -= 2;
-        
-        for(int y2 = y; y2 >= y - 20; y2--){
-        	if(y2 > y - 100){
-        	}
-        	for(int x2 = x; x2 <= x + 5; x2++){
-        		for(int z2 = z; z2 <= z + 5; z2++){
-        			TileEntity TE = world.getTileEntity(x2, y2, z2);
-            		if(TE != null){
-            			if(TE instanceof LeafTileEntity){
-            				LeafTileEntity LTE = (LeafTileEntity) TE;
-            				System.out.println(LTE.changeLeave());
-            			}
-            		}
-            	}
-        	}
-        }
+		if(!world.isRemote){
+			int x = MathHelper.floor_double(player.posX);
+	        int y = MathHelper.floor_double(player.posY);
+	        int z = MathHelper.floor_double(player.posZ);
+	        
+	        x -= 2;
+	        y += 20;
+	        z -= 2;
+	        
+	        for(int y2 = y; y2 >= y - 20; y2--){
+	        	for(int x2 = x; x2 <= x + 5; x2++){
+	        		for(int z2 = z; z2 <= z + 5; z2++){
+	        			Block block = world.getBlock(x2, y2, z2);
+	        			if(block instanceof SoulessLeaves){
+		        			int meta = world.getBlockMetadata(x2, y2, z2);
+		        			if(meta < 3){
+		        				meta++;
+		        				world.setBlockMetadataWithNotify(x2, y2, z2, meta, 2);
+		        				System.out.println(meta);
+		        			}
+	        			}
+	        			
+	        			/*TileEntity TE = world.getTileEntity(x2, y2, z2);
+	            		if(TE != null){
+	            			if(TE instanceof LeafTileEntity){
+	            				LeafTileEntity LTE = (LeafTileEntity) TE;
+	            				System.out.println(LTE.changeLeave());
+	            			}
+	            		}*/
+	            	}
+	        	}
+	        }
+		}
         
         return stack;
     }

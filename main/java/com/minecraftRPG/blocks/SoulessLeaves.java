@@ -1,9 +1,12 @@
 package com.minecraftRPG.blocks;
 
 import com.minecraftRPG.lib.Strings;
+import com.minecraftRPG.main.MinecraftRPG;
 import com.minecraftRPG.tileEntity.DarkRitual;
 import com.minecraftRPG.tileEntity.LeafTileEntity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -44,6 +47,17 @@ public class SoulessLeaves extends BlockContainer {
 	
 	public void setIcon(int index){
 		this.blockIcon = iconList[index];
+	}
+	
+	@SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int meta)
+    {
+        return iconList[meta];
+    }
+	
+	@Override
+	public int damageDropped (int metadata) {
+		return metadata;
 	}
 	
     @Override

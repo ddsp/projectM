@@ -13,6 +13,7 @@ public class LeafTileEntity extends TileEntity{
 		if(index++ <= 3){
 			index++;
 			l.setIcon(index);
+			System.out.println(index);
 			return true;
 		}else{
 			return false;
