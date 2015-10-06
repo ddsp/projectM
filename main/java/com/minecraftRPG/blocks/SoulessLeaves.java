@@ -45,10 +45,6 @@ public class SoulessLeaves extends BlockContainer {
         return false;
     }
 	
-	public void setIcon(int index){
-		this.blockIcon = iconList[index];
-	}
-	
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int meta)
     {
