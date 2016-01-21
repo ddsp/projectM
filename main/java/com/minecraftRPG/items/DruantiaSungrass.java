@@ -106,13 +106,15 @@ public class DruantiaSungrass extends ItemSword{
 			
 			List mobs = world.getEntitiesWithinAABB(EntityMob.class, player.boundingBox.expand(10, 10, 10));
 			
-			for(int PlantVirus = Virus; PlantVirus > 0; PlantVirus--){
-				int value = rand.nextInt(mobs.size());
-				
-				EntityMob m = (EntityMob) mobs.get(value);
-				
-				((EntityLiving)m).addPotionEffect(new PotionEffect(Potion.poison.id, 200, 30));
-				System.out.println(m.getActivePotionEffect(Potion.poison));
+			if(!mobs.isEmpty()){
+				for(int PlantVirus = Virus; PlantVirus > 0; PlantVirus--){
+					int value = rand.nextInt(mobs.size());
+					
+					EntityMob m = (EntityMob) mobs.get(value);
+					
+					((EntityLiving)m).addPotionEffect(new PotionEffect(Potion.poison.id, 200, 30));
+					System.out.println(m.getActivePotionEffect(Potion.poison));
+				}
 			}
 		}
         
@@ -160,11 +162,7 @@ public class DruantiaSungrass extends ItemSword{
 			else
 			{
 				list.add(colorChar[3%8] + "Life Energie: " + String.format("%.2f", NatureEnergiePerc) + "%     Naturalist: " + Naturalist);
-			}
-			
-			
-		
-   		 				
+			}		
     		 
     	 }else{
     		 stack.stackTagCompound = new NBTTagCompound(); 

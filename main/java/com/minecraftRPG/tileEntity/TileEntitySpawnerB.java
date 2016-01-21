@@ -54,6 +54,7 @@ public class TileEntitySpawnerB extends TileEntity{
 			{
 				EntityBlackWolf var2 = new EntityBlackWolf(this.worldObj);
 				var2.setLocationAndAngles(this.xCoord+3, this.yCoord, this.zCoord+3,this.worldObj.rand.nextFloat() * 360.0F, 0.0F);
+				var2.setAttackTarget(this.worldObj.getClosestPlayer((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D, 16));
 				worldObj.spawnEntityInWorld(var2);
 				
 				worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, Blocks.air, 0, 1 | 2);

@@ -36,14 +36,11 @@ public class EntityFlyingTestC extends EntityLiving{
 	@Override
 	public void onLivingUpdate()
 	{
-		if(secondPart == null){
-			System.out.println("Hello");
-		}else{
+		if(secondPart != null){
 			secondPart.setPosition(this.posX + 1, this.posY, this.posZ);
-			this.posY = 71;
-			//System.out.println(secondPart.posX + "   " + secondPart.posY + "   " + secondPart.posZ + 1);
 		}
-		//super.onLivingUpdate();
+		this.motionY *= 0;
+		secondPart.motionY *= 0;
 	}
 	
 	@Override
