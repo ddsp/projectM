@@ -5,7 +5,7 @@ import com.minecraftRPG.armor.MinecraftRPGArmor;
 import com.minecraftRPG.blocks.MinecraftRPGBlocks;
 import com.minecraftRPG.items.MinecraftRPGitems;
 import com.minecraftRPG.lib.Strings;
-import com.minecraftRPG.mobs.MinecraftRPGEntitys;
+import com.minecraftRPG.mobs.entity.MinecraftRPGEntitys;
 import com.minecraftRPG.structures.Structures;
 import com.minecraftRPG.tileEntity.MinecraftRPGtileEntity;
 import com.minecraftRPG.world.MinecraftRPGWorldGenOre;

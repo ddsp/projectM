@@ -2,10 +2,10 @@ package com.minecraftRPG.items;
 
 import com.minecraftRPG.GUI.GUILimiter_Def;
 import com.minecraftRPG.GUI.ritualsGUI;
-import com.minecraftRPG.mobs.EntityBlackWolf;
-import com.minecraftRPG.mobs.EntityFlyingTestC;
-import com.minecraftRPG.mobs.MultiMobTest;
-import com.minecraftRPG.models.BlackWolf;
+import com.minecraftRPG.mobs.controller.MultiMobTest;
+import com.minecraftRPG.mobs.entity.EntityBlackWolf;
+import com.minecraftRPG.mobs.entity.EntityFlyingTestC;
+import com.minecraftRPG.mobs.model.BlackWolf;
 import com.minecraftRPG.structures.test;
 
 import cpw.mods.fml.relauncher.Side;

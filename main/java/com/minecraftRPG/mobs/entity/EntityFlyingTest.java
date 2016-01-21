@@ -1,4 +1,4 @@
-package com.minecraftRPG.mobs;
+package com.minecraftRPG.mobs.entity;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -48,14 +48,4 @@ public class EntityFlyingTest extends EntityLiving{
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(5.0F);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.0D);
 	}
-	
-	/*@Override
-	public void moveEntityWithHeading(float par1, float par2) {
-		if(father == null){
-			super.moveEntityWithHeading(par1, par2);
-		}else{
-			this.motionY = 0;
-		}
-	}*/
-
 }

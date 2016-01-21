@@ -1,4 +1,4 @@
-package com.minecraftRPG.mobs;
+package com.minecraftRPG.mobs.entity;
 
 import com.minecraftRPG.main.MinecraftRPG;
 

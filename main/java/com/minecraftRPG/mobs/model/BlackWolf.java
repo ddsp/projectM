@@ -1,4 +1,4 @@
-package com.minecraftRPG.models;
+package com.minecraftRPG.mobs.model;
 
 
 import net.minecraft.client.model.ModelBase;

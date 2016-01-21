@@ -2,9 +2,9 @@ package com.minecraftRPG.items;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.minecraftRPG.mobs.EntityBlackWolf;
-import com.minecraftRPG.mobs.EntitySpiritWolf;
-import com.minecraftRPG.mobs.IvisiProj;
+import com.minecraftRPG.mobs.entity.EntityBlackWolf;
+import com.minecraftRPG.mobs.entity.EntitySpiritWolf;
+import com.minecraftRPG.mobs.entity.IvisiProj;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

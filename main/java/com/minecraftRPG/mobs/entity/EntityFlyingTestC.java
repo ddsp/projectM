@@ -1,4 +1,4 @@
-package com.minecraftRPG.mobs;
+package com.minecraftRPG.mobs.entity;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;

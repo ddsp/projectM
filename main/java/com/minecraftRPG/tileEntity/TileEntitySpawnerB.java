@@ -2,7 +2,7 @@ package com.minecraftRPG.tileEntity;
 
 import com.jcraft.jogg.Packet;
 import com.minecraftRPG.blocks.spawner;
-import com.minecraftRPG.mobs.EntityBlackWolf;
+import com.minecraftRPG.mobs.entity.EntityBlackWolf;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityPigZombie;

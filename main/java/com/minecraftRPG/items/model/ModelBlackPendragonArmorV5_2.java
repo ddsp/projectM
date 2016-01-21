@@ -1,4 +1,4 @@
-package com.minecraftRPG.models;
+package com.minecraftRPG.items.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;

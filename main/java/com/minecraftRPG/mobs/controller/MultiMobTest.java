@@ -1,4 +1,6 @@
-package com.minecraftRPG.mobs;
+package com.minecraftRPG.mobs.controller;
+
+import com.minecraftRPG.mobs.entity.EntityFlyingTest;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.world.World;

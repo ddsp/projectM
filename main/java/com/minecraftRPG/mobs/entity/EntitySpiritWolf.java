@@ -1,4 +1,6 @@
-package com.minecraftRPG.mobs;
+package com.minecraftRPG.mobs.entity;
+
+import com.minecraftRPG.mobs.ai.SpiritWolfCAI;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;

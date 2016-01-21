@@ -1,9 +1,9 @@
-package com.minecraftRPG.renderItems;
+package com.minecraftRPG.items.render;
 
 import org.lwjgl.opengl.GL11;
 
+import com.minecraftRPG.items.model.Unsheaded_Orb;
 import com.minecraftRPG.lib.Strings;
-import com.minecraftRPG.models.Unsheaded_Orb;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
