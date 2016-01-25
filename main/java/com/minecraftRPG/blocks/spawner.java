@@ -16,11 +16,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 
-public class spawner extends BlockContainer {	
+public class Spawner extends BlockContainer {	
 	
 	World world;
 	
-	public spawner(Material mat){
+	public Spawner(Material mat){
 		super(mat);
 		this.setCreativeTab(CreativeTabs.tabMisc);
 		this.setHarvestLevel("pickaxe", 1);

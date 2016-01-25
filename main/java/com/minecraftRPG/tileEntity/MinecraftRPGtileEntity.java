@@ -1,6 +1,6 @@
 package com.minecraftRPG.tileEntity;
 
-import com.minecraftRPG.blocks.spawner;
+import com.minecraftRPG.blocks.Spawner;
 import com.minecraftRPG.lib.Strings;
 
 import cpw.mods.fml.common.registry.GameRegistry;

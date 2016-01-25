@@ -1,7 +1,7 @@
 package com.minecraftRPG.tileEntity;
 
 import com.jcraft.jogg.Packet;
-import com.minecraftRPG.blocks.spawner;
+import com.minecraftRPG.blocks.Spawner;
 import com.minecraftRPG.mobs.entity.EntityBlackWolf;
 
 import net.minecraft.block.Block;
@@ -13,9 +13,9 @@ import net.minecraft.world.World;
 
 public class TileEntitySpawnerB extends TileEntity{
 	
-	spawner Spawner;
+	Spawner Spawner;
 	
-	public TileEntitySpawnerB(spawner s2){
+	public TileEntitySpawnerB(Spawner s2){
 		Spawner = s2;
 	}
 	

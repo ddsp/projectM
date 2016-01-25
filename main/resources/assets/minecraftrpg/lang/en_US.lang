@@ -11,13 +11,16 @@ item.minecraftrpg:Pendragon_Boots.name=Pendragon Boots
 item.SpiritWolfStaff.name=Spirit Wolf Staff
 item.ReloadedSword.name=Reloaded Sword
 item.SilverSword.name=Silver Sword
-item.SilverSword.name=Silver Sword
 item.QuishaTianling.name=Quisha Tianling
 item.QuishaTianlingCreative.name=Quisha Tianling (C)
 item.DruantiaSungrass.name=Druantia Sungrass
+item.CostumBook.name=Guide Book
 
 entity.BlackWolf.name=Black Wolf
 
 tile.SilverOre.name=Silver Ore
+tile.SoullessLeaf.name=Soulless Leave
+tile.AltarPedestal.name=Alter Pedestal
+tile.TeleporterWall.name=Teleporter Wall
 
 itemGroup.MinecraftRPG=Minecraft RPG

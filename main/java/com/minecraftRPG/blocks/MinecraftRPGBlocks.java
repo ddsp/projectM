@@ -15,24 +15,30 @@ public class MinecraftRPGBlocks {
     
     public static Block spawner;
     public static Block SilverOre;
-    public static Block BaseBlock;
-    public static Block AlterPedestal;
-    public static Block SoulessLeaves;
+    public static Block TeleporterWall;
+    public static Block AltarPedestal;
+    public static Block SoullessLeaves;
     
     public static void initBlocks(){
-    	spawner = new spawner(Material.rock).setHardness(1.5F).setBlockName("spawner").setCreativeTab(MinecraftRPGTab);
+    	spawner = new Spawner(Material.rock).setHardness(1.5F).setBlockName("spawner");
+    	
+    	//Ores
     	SilverOre = new SilverOre(Material.rock).setHardness(1.5F).setBlockName("SilverOre").setCreativeTab(MinecraftRPGTab);
-    	BaseBlock = new BaseBlock(Material.rock).setHardness(1.5F).setBlockName("BaseBlock").setCreativeTab(MinecraftRPGTab);
-    	AlterPedestal = new AlterPedestal(Material.rock).setHardness(1.5F).setBlockName("AlterPedestal").setCreativeTab(MinecraftRPGTab);
-    	SoulessLeaves = new SoulessLeaves(Material.leaves).setHardness(0F).setBlockName("SoulessLeaves").setCreativeTab(MinecraftRPGTab);
+    	
+    	//Functionality
+    	AltarPedestal = new AlterPedestal(Material.rock).setHardness(1.5F).setBlockName("AltarPedestal").setCreativeTab(MinecraftRPGTab);
+    	TeleporterWall = new AlterPedestal(Material.rock).setHardness(-1F).setBlockName("TeleporterWall").setCreativeTab(MinecraftRPGTab);
+    	
+    	//Trees
+    	SoullessLeaves = new SoulessLeaves(Material.leaves).setHardness(0F).setBlockName("SoullessLeaves").setCreativeTab(MinecraftRPGTab);
     }
     
     public static void registerBlocks(){    	
     	GameRegistry.registerBlock(spawner, "spawner");
     	GameRegistry.registerBlock(SilverOre, "SilverOre");
-    	GameRegistry.registerBlock(BaseBlock, "BaseBlock");  
-    	GameRegistry.registerBlock(AlterPedestal, "AlterPedestal");
-    	GameRegistry.registerBlock(SoulessLeaves, "SoulessLeaves");  
+    	GameRegistry.registerBlock(TeleporterWall, "TeleporterWall");  
+    	GameRegistry.registerBlock(AltarPedestal, "AlterPedestal");
+    	GameRegistry.registerBlock(SoullessLeaves, "SoulessLeaves");  
     }
     
     public static CreativeTabs MinecraftRPGTab = new CreativeTabs("MinecraftRPG"){

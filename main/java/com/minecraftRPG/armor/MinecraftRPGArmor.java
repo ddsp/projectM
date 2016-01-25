@@ -3,7 +3,7 @@ package com.minecraftRPG.armor;
 import com.minecraftRPG.blocks.AlterPedestal;
 import com.minecraftRPG.blocks.BaseBlock;
 import com.minecraftRPG.blocks.SilverOre;
-import com.minecraftRPG.blocks.spawner;
+import com.minecraftRPG.blocks.Spawner;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
